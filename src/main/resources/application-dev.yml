@@ -4,7 +4,7 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database:3306/builzer
+    url: jdbc:mysql://builzer-database:3306/builzer
     username: root
     password: 11111111
 

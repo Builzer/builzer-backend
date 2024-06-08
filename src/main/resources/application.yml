@@ -4,3 +4,19 @@ spring:
       on-profile: local,dev,prod
   application:
     name: backend
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    db:
+      enabled: false
