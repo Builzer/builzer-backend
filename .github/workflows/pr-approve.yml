@@ -23,7 +23,7 @@ jobs:
           else
             echo "PR has not been approved."
             echo "::set-output name=approved::false"
-          }
+          fi
 
   approve-notification:
     runs-on: ubuntu-latest
