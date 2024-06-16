@@ -93,7 +93,7 @@ jobs:
           PR_ASSIGNEES=$(jq -r '[.pull_request.assignees[].login] | join(", ")' < $GITHUB_EVENT_PATH)
           echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
           echo "PR_ASSIGNEES=$PR_ASSIGNEES" >> $GITHUB_ENV
-      - name: Send Successful deployment message to slack channel
+      - name: Send Failure deployment message to slack channel
         run: |
           curl -X POST --data-urlencode "payload={\"channel\": \"#builzer-코드리뷰
           \", \"username\": \"Pull requests 실패 알림\", \"text\": \"[모듈]: builzer-backend\n[제목]: ${{ env.PR_TITLE }}\n[요청자]: ${{ env.PR_ASSIGNEES }}\n[메시지]: 빌드, 테스트가 실패하였습니다.\"}" ${{ env.SLACK_CODE_REVIEW_NOTIFICATION_URL }}

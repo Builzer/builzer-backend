@@ -1,0 +1,36 @@
+name: PR Comment Workflow
+
+on:
+  issue_comment:
+    types: [created]
+
+env:
+  SLACK_CODE_REVIEW_NOTIFICATION_URL: ${{ secrets.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
+
+jobs:
+  notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Get PR and Comment Info
+        id: pr_comment_info
+        run: |
+          # Get PR Title
+          PR_TITLE=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}" | jq -r '.title')
+          
+          # Get PR Assignees
+          PR_ASSIGNEES=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}" | jq -r '[.assignees[].login] | join(", ")')
+          
+          # Get Comment Body and Author
+          COMMENT_BODY=$(jq -r '.comment.body' < $GITHUB_EVENT_PATH)
+          COMMENT_AUTHOR=$(jq -r '.comment.user.login' < $GITHUB_EVENT_PATH)
+          
+          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
+          echo "PR_ASSIGNEES=$PR_ASSIGNEES" >> $GITHUB_ENV
+          echo "COMMENT_BODY=$COMMENT_BODY" >> $GITHUB_ENV
+          echo "COMMENT_AUTHOR=$COMMENT_AUTHOR" >> $GITHUB_ENV
+      - name: Send Successful deployment message to slack channel
+        run: |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#builzer-코드리뷰
+          \", \"username\": \"PR Comment 알림\", \"text\": \"[모듈]: builzer-backend\n[제목]: ${{ env.PR_TITLE }}\n[Comment 작성자]: ${{ env.COMMENT_AUTHOR }}\n[Comment 내용]: ${{ env.COMMENT_BODY }}\"}" ${{ env.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
