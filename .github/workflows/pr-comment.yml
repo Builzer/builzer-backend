@@ -1,10 +1,8 @@
 name: PR Comment Workflow
 
 on:
-  issue_comment:
-    types: [created]
-    issues:
-      types: [ pull_request ]
+  pull_request_review_comment:
+    types: [created,edited]
 
 env:
   SLACK_CODE_REVIEW_NOTIFICATION_URL: ${{ secrets.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
