@@ -28,7 +28,6 @@ jobs:
   approve-notification:
     runs-on: ubuntu-latest
     needs: [check-approval]
-    if: ${{ needs.check-approval.outputs.approved == 'true' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
