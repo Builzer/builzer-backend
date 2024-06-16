@@ -5,6 +5,8 @@ on:
     branches:
       - 'develop'
       - 'release'
+env:
+  SLACK_CODE_REVIEW_NOTIFICATION_URL: ${{ secrets.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -58,3 +60,33 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew test
         shell: bash
+  success-notification:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: success()
+    steps:
+      - name: Get PR Info
+        run: |
+          echo "PR_TITLE=$(jq -r '.pull_request.title' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_BODY=$(jq -r '.pull_request.body' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_USER=$(jq -r '.pull_request.user.login' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_ASSIGNEE=$(jq -r '.pull_request.assignee.login // "None"' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+      - name: Send Successful deployment message to slack channel
+        run: |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#builzer-코드리뷰
+          \", \"username\": \"Pull requests 알림\", \"text\": \"[모듈]: builzer-backend\n[제목]: ${{ env.PR_TITLE }}\n[내용]: ${{ env.PR_BODY }}\n[요청자]: ${{ env.PR_ASSIGNEE }}\n[담당자]: ${{ env.PR_USER }}\"}" ${{ env.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
+  failure-notification:
+    runs-on: ubuntu-latest
+    needs: [ build, test ]
+    if: failure()
+    steps:
+      - name: Get PR Info
+        run: |
+          echo "PR_TITLE=$(jq -r '.pull_request.title' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_BODY=$(jq -r '.pull_request.body' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_USER=$(jq -r '.pull_request.user.login' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PR_ASSIGNEE=$(jq -r '.pull_request.assignee.login // "None"' < $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+      - name: Send Successful deployment message to slack channel
+        run: |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#builzer-코드리뷰
+          \", \"username\": \"Pull requests 실패 알림\", \"text\": \"[모듈]: builzer-backend\n[제목]: ${{ env.PR_TITLE }}\n[요청자]: ${{ env.PR_ASSIGNEE }}\n[메시지]: 빌드, 테스트가 실패하였습니다.\"}" ${{ env.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
