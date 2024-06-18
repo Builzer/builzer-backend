@@ -1,8 +1,8 @@
 name: PR Comment Workflow
 
 on:
-  pull_request_review_comment:
-    types: [created,edited]
+  issue_comment:
+    types: [ created, edited ]
 
 env:
   SLACK_CODE_REVIEW_NOTIFICATION_URL: ${{ secrets.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
@@ -10,6 +10,8 @@ env:
 jobs:
   notification:
     runs-on: ubuntu-latest
+    if: github.event.issue.pull_request != null
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
