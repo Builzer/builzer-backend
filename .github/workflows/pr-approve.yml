@@ -45,9 +45,10 @@ jobs:
           # Get Approved Reviewers
           PR_APPROVED_REVIEWERS=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews" | jq -r '[.[] | select(.state == "APPROVED") | .user.login] | join(", ")')
           
-          # Calculate Remaining Approvals
-          PR_REVIEWERS=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}/requested_reviewers" | jq -r '[.[] | .login]')
-          REMAINING_APPROVALS=$(echo "$PR_REVIEWERS" | wc -l | xargs)
+          # Get PR Reviewers
+          PR_REVIEWERS=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}/requested_reviewers" | jq -r '[.users[].login] | join(", ")')
+          
+          REMAINING_APPROVALS=$(echo "$PR_REVIEWERS" | wc -w | xargs)
           
           echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
           echo "PR_ASSIGNEES=$PR_ASSIGNEES" >> $GITHUB_ENV
