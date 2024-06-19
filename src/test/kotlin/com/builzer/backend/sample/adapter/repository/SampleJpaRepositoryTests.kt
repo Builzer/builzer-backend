@@ -15,7 +15,6 @@ class SampleJpaRepositoryTests : BehaviorSpec() {
     @Autowired
     lateinit var sampleJpaRepository: SampleJpaRepository
 
-
     init {
         Given("name = hello인") {
             val name = "hello"
