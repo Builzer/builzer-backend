@@ -2,7 +2,7 @@ package com.builzer.backend.global.response
 
 import org.springframework.http.HttpStatus
 
-class ApiResponse<T>(
+class ApiResponse<T> private constructor(
     val code: Int = HttpStatus.OK.value(),
     val message: String = "",
     val data: T? = null
