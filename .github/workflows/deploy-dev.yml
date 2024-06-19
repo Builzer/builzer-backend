@@ -111,7 +111,7 @@ jobs:
     needs: [ build, test, deploy ]
     if: success()
     steps:
-      - name: Send Successful deployment message to slack channel
+      - name: Send Successful deployment message to discord channel
         env:
           DATA: >
             {
@@ -132,7 +132,7 @@ jobs:
     needs: [ build, test, deploy ]
     if: failure()
     steps:
-      - name: Send Successful deployment message to slack channel
+      - name: Send Successful deployment message to discord channel
         env:
           DATA: >
             {
