@@ -6,8 +6,6 @@ on:
     branches:
       - 'develop'
       - 'release'
-env:
-  SLACK_CODE_REVIEW_NOTIFICATION_URL: ${{ secrets.SLACK_CODE_REVIEW_NOTIFICATION_URL }}
 jobs:
   build:
     runs-on: ubuntu-latest
