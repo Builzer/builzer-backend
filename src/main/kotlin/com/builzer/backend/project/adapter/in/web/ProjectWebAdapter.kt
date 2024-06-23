@@ -16,19 +16,15 @@ import org.springframework.web.bind.annotation.RestController
 class ProjectWebAdapter(
     private val repoInfoUseCase: RepoInfoUseCase
 ) {
-    @GetMapping("/repos")
-    fun getRepoList(): ApiResponse<List<RepoInfoResponse>> {
-        // 토큰 획득 필요
-        val token = ""
-        val response = repoInfoUseCase.getRepoList(token)
+    @GetMapping("/repos?possession={possession}")
+    fun getRepoList(@RequestParam possession: String): ApiResponse<List<RepoInfoResponse>> {
+        val response = repoInfoUseCase.getRepoList(possession)
         return ApiResponse.ok(response)
     }
 
     @GetMapping("/{repoName}/branches")
     fun getBranchList(@PathVariable repoName: String): ApiResponse<List<BranchResponse>> {
-        // 토큰 획득 필요
-        val token = ""
-        val response = repoInfoUseCase.getBranchList(token, repoName)
+        val response = repoInfoUseCase.getBranchList(repoName)
         return ApiResponse.ok(response)
     }
 
@@ -38,9 +34,7 @@ class ProjectWebAdapter(
         @RequestParam(defaultValue = "master") branchName: String,
         @RequestParam(defaultValue = "/") path: String
     ): ApiResponse<List<RepoItemListResponse>> {
-        // 토큰 획득 필요
-        val token = ""
-        val response = repoInfoUseCase.getRepoItemList(token, repoName, branchName, path)
+        val response = repoInfoUseCase.getRepoItemList(repoName, branchName, path)
         return ApiResponse.ok(response)
     }
 

@@ -5,10 +5,9 @@ import com.builzer.backend.project.adapter.`in`.web.response.RepoItemListRespons
 import com.builzer.backend.project.adapter.`in`.web.response.RepoInfoResponse
 
 interface RepoInfoUseCase {
-    fun getRepoList(token: String): List<RepoInfoResponse>
-    fun getBranchList(token: String, repoName: String): List<BranchResponse>
+    fun getRepoList(possession: String): List<RepoInfoResponse>
+    fun getBranchList(repoName: String): List<BranchResponse>
     fun getRepoItemList(
-        token: String,
         repoName: String,
         branch: String,
         path: String

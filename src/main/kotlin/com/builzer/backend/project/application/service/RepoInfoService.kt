@@ -3,28 +3,42 @@ package com.builzer.backend.project.application.service
 import com.builzer.backend.project.adapter.`in`.web.response.BranchResponse
 import com.builzer.backend.project.adapter.`in`.web.response.RepoInfoResponse
 import com.builzer.backend.project.adapter.`in`.web.response.RepoItemListResponse
+import com.builzer.backend.project.adapter.out.client.GithubRepoInfoClient
+import com.builzer.backend.project.adapter.out.client.mapper.GithubMapper
 import com.builzer.backend.project.application.port.`in`.RepoInfoUseCase
-import org.springframework.beans.factory.annotation.Value
+import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
 
 @Service
 class RepoInfoService (
-    @Value("\${github.request}") val requestUrl: String
+    private val githubRepoInfoClient: GithubRepoInfoClient
 ): RepoInfoUseCase {
-    override fun getRepoList(token: String): List<RepoInfoResponse> {
-        TODO("Not yet implemented")
+
+    private val mapper = Mappers.getMapper(GithubMapper::class.java)
+
+    override fun getRepoList(possession: String): List<RepoInfoResponse> {
+        // To do 깃헙 토큰
+        val gitToken = ""
+        val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(gitToken, possession)
+        return mapper.toRepoInfo(githubRepoInfoResponse)
     }
 
-    override fun getBranchList(token: String, repoName: String): List<BranchResponse> {
-        TODO("Not yet implemented")
+    override fun getBranchList(repoName: String): List<BranchResponse> {
+        // To do 깃헙 토큰
+        val gitToken = ""
+        val githubBranchResponse = githubRepoInfoClient.getBranchInfo(gitToken, repoName)
+        return mapper.toBranchInfo(githubBranchResponse)
     }
 
     override fun getRepoItemList(
-        token: String,
         repoName: String,
         branch: String,
         path: String
     ): List<RepoItemListResponse> {
-        TODO("Not yet implemented")
+        // To do 깃헙 토큰
+        val gitToken = ""
+        val githubItemInfoResponse = githubRepoInfoClient.getItemInfo(gitToken, repoName, path, branch)
+        return mapper.toItemInfo(githubItemInfoResponse)
     }
+
 }
