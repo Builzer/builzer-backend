@@ -20,3 +20,6 @@ management:
   health:
     db:
       enabled: false
+
+github:
+  request: https://api.github.com
