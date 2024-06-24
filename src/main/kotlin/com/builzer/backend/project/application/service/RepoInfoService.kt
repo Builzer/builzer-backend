@@ -1,7 +1,8 @@
 package com.builzer.backend.project.application.service
 
 import com.builzer.backend.project.adapter.`in`.web.response.BranchResponse
-import com.builzer.backend.project.adapter.`in`.web.response.RepoInfoResponse
+import com.builzer.backend.project.adapter.`in`.web.response.OrgResponse
+import com.builzer.backend.project.adapter.`in`.web.response.RepoResponse
 import com.builzer.backend.project.adapter.`in`.web.response.RepoItemListResponse
 import com.builzer.backend.project.adapter.out.client.GithubRepoInfoClient
 import com.builzer.backend.project.adapter.out.client.mapper.GithubMapper
@@ -16,11 +17,27 @@ class RepoInfoService (
 
     private val mapper = Mappers.getMapper(GithubMapper::class.java)
 
-    override fun getRepoList(possession: String): List<RepoInfoResponse> {
+    override fun getOrgList(): List<OrgResponse> {
         // To do 깃헙 토큰
         val gitToken = ""
-        val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(gitToken, possession)
-        return mapper.toRepoInfo(githubRepoInfoResponse)
+        val githubRepoInfoResponse = githubRepoInfoClient.getOrgInfo(gitToken)
+        return mapper.toOrgInfo(githubRepoInfoResponse)
+    }
+
+    override fun getRepoList(
+        possession: String,
+        orgName: String?
+    ): List<RepoResponse> {
+        // To do 깃헙 토큰
+        val gitToken = ""
+
+        if (orgName.isNullOrBlank()) {      // 개인 레포 목록
+            val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(gitToken, possession)
+            return mapper.toRepoInfo(githubRepoInfoResponse)
+        } else {                            // 조직 레포 목록
+            val githubRepoInfoResponse = githubRepoInfoClient.getOrgRepoInfo(gitToken, orgName)
+            return mapper.toRepoInfo(githubRepoInfoResponse)
+        }
     }
 
     override fun getBranchList(repoName: String): List<BranchResponse> {

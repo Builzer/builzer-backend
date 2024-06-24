@@ -2,7 +2,8 @@ package com.builzer.backend.project.adapter.`in`.web
 
 import com.builzer.backend.global.response.ApiResponse
 import com.builzer.backend.project.adapter.`in`.web.response.BranchResponse
-import com.builzer.backend.project.adapter.`in`.web.response.RepoInfoResponse
+import com.builzer.backend.project.adapter.`in`.web.response.OrgResponse
+import com.builzer.backend.project.adapter.`in`.web.response.RepoResponse
 import com.builzer.backend.project.adapter.`in`.web.response.RepoItemListResponse
 import com.builzer.backend.project.application.port.`in`.RepoInfoUseCase
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,9 +17,18 @@ import org.springframework.web.bind.annotation.RestController
 class ProjectWebAdapter(
     private val repoInfoUseCase: RepoInfoUseCase
 ) {
-    @GetMapping("/repos?possession={possession}")
-    fun getRepoList(@RequestParam possession: String): ApiResponse<List<RepoInfoResponse>> {
-        val response = repoInfoUseCase.getRepoList(possession)
+    @GetMapping("/orgs")
+    fun getOrganizationList(): ApiResponse<List<OrgResponse>> {
+        val response = repoInfoUseCase.getOrgList()
+        return ApiResponse.ok(response)
+    }
+
+    @GetMapping("/repos")
+    fun getRepoList(
+        @RequestParam(defaultValue = "owner") possession: String,
+        @RequestParam(required = false) orgName: String?,
+    ): ApiResponse<List<RepoResponse>> {
+        val response = repoInfoUseCase.getRepoList(possession, orgName)
         return ApiResponse.ok(response)
     }
 

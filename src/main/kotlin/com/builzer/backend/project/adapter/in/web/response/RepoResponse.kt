@@ -1,6 +1,6 @@
 package com.builzer.backend.project.adapter.`in`.web.response
 
-class RepoInfoResponse (
+class RepoResponse (
     val repoName: String,
     val isPrivate: Boolean,
     val projectType: String,
