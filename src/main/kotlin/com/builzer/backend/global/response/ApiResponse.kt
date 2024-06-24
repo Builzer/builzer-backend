@@ -24,7 +24,7 @@ class ApiResponse<T> private constructor(
             )
         }
 
-        fun <T> badRequest(data: T, message: String): ApiResponse<T> {
+        fun <T> badRequest(data: T): ApiResponse<T> {
             return ApiResponse(
                 code = HttpStatus.BAD_REQUEST.value(),
                 message = HttpStatus.BAD_REQUEST.reasonPhrase,
