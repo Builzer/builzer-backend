@@ -14,4 +14,5 @@ class GlobalExceptionHandler {
             data = "Internal Server Error"
         )
     }
+    
 }
