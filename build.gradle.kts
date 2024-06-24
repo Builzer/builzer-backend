@@ -53,6 +53,11 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
 
+    // WireMock
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.4")
+
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("io.github.openfeign:feign-okhttp")
 }
 
 kotlin {
@@ -63,4 +68,12 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+extra["springCloudVersion"] = "2023.0.2"
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
