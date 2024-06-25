@@ -53,8 +53,9 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
 
-    // WireMock
-    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.4")
+    // wireMock
+//    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.4")
+    testImplementation("io.kotest.extensions:kotest-extensions-wiremock:3.1.0")
 
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("io.github.openfeign:feign-okhttp")

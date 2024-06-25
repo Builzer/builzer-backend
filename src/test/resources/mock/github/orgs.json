@@ -1,0 +1,72 @@
+[
+  {
+    "login": "SSAFY-DaeJeon-88",
+    "id": 109801213,
+    "node_id": "O_ddfasdftu_Q",
+    "url": "https://api.github.com/orgs/SSAFY-DaeJeon-88",
+    "repos_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/repos",
+    "events_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/events",
+    "hooks_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/hooks",
+    "issues_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/issues",
+    "members_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/SSAFY-DaeJeon-88/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/109801213?v=4",
+    "description": ""
+  },
+  {
+    "login": "JOB-Frontend-Study",
+    "id": 112854836,
+    "node_id": "O_fadewqeHNA",
+    "url": "https://api.github.com/orgs/JOB-Frontend-Study",
+    "repos_url": "https://api.github.com/orgs/JOB-Frontend-Study/repos",
+    "events_url": "https://api.github.com/orgs/JOB-Frontend-Study/events",
+    "hooks_url": "https://api.github.com/orgs/JOB-Frontend-Study/hooks",
+    "issues_url": "https://api.github.com/orgs/JOB-Frontend-Study/issues",
+    "members_url": "https://api.github.com/orgs/JOB-Frontend-Study/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/JOB-Frontend-Study/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/112854836?v=4",
+    "description": ""
+  },
+  {
+    "login": "Cobby-Play",
+    "id": 134457853,
+    "node_id": "O_kgDOCAOp_Q",
+    "url": "https://api.github.com/orgs/Cobby-Play",
+    "repos_url": "https://api.github.com/orgs/Cobby-Play/repos",
+    "events_url": "https://api.github.com/orgs/Cobby-Play/events",
+    "hooks_url": "https://api.github.com/orgs/Cobby-Play/hooks",
+    "issues_url": "https://api.github.com/orgs/Cobby-Play/issues",
+    "members_url": "https://api.github.com/orgs/Cobby-Play/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/Cobby-Play/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/134457853?v=4",
+    "description": null
+  },
+  {
+    "login": "lotteon2",
+    "id": 143988538,
+    "node_id": "O_qwqweXOg",
+    "url": "https://api.github.com/orgs/lotteon2",
+    "repos_url": "https://api.github.com/orgs/lotteon2/repos",
+    "events_url": "https://api.github.com/orgs/lotteon2/events",
+    "hooks_url": "https://api.github.com/orgs/lotteon2/hooks",
+    "issues_url": "https://api.github.com/orgs/lotteon2/issues",
+    "members_url": "https://api.github.com/orgs/lotteon2/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/lotteon2/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/143988538?v=4",
+    "description": ""
+  },
+  {
+    "login": "Builzer",
+    "id": 166028841,
+    "node_id": "O_fdsasgeVmKQ",
+    "url": "https://api.github.com/orgs/Builzer",
+    "repos_url": "https://api.github.com/orgs/Builzer/repos",
+    "events_url": "https://api.github.com/orgs/Builzer/events",
+    "hooks_url": "https://api.github.com/orgs/Builzer/hooks",
+    "issues_url": "https://api.github.com/orgs/Builzer/issues",
+    "members_url": "https://api.github.com/orgs/Builzer/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/Builzer/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/166028841?v=4",
+    "description": ""
+  }
+]
