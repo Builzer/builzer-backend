@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import java.sql.Timestamp
 import java.time.LocalDateTime
 
 @MappedSuperclass
@@ -15,9 +16,9 @@ import java.time.LocalDateTime
 open class BaseTimeEntity(
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    val createdAt: LocalDateTime,
+    val createdAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
 
     @LastModifiedDate
-    @Column(name = "updated_at")
-    var updatedAt: LocalDateTime?
+    @Column(name = "updated_at", nullable = false, updatable = false)
+    val updatedAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now())
 )

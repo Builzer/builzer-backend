@@ -35,9 +35,6 @@ class MemberJpaEntity(
     var customerKey: String,
 
     @Column(name = "billing_key")
-    var billingKey: String?,
-    
-    createdAt: LocalDateTime,
+    var billingKey: String?
 
-    updatedAt: LocalDateTime,
-) : BaseTimeEntity(createdAt = createdAt, updatedAt = updatedAt)
+) : BaseTimeEntity()
