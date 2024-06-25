@@ -7,8 +7,9 @@ import java.time.LocalDateTime
 @Entity(name = "member")
 class MemberJpaEntity(
     @Id
+    @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var memberId: Long? = null,
 
     @Column(name = "profile_img", nullable = false)
     var profileImg: Int,
@@ -36,7 +37,7 @@ class MemberJpaEntity(
 
     @Column(name = "billing_key")
     var billingKey: String?,
-    
+
     createdAt: LocalDateTime,
 
     updatedAt: LocalDateTime,
