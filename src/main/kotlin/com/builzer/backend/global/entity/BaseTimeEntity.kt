@@ -14,11 +14,13 @@ import java.time.LocalDateTime
 @EnableJpaAuditing
 @EntityListeners(AuditingEntityListener::class)
 open class BaseTimeEntity(
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    val createdAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
+        @CreatedDate
+        @Column(name = "created_at", nullable = false, updatable = false,
+                columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+        val createdAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
 
-    @LastModifiedDate
-    @Column(name = "updated_at", nullable = false, updatable = false)
-    val updatedAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now())
+        @LastModifiedDate
+        @Column(name = "updated_at", nullable = false,
+                columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+        val updatedAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now())
 )
