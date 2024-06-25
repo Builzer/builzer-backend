@@ -9,7 +9,7 @@ class MemberJpaEntity(
     @Id
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var memberId: Long? = null,
+    var id: Long? = null,
 
     @Column(name = "profile_img", nullable = false)
     var profileImg: Int,
