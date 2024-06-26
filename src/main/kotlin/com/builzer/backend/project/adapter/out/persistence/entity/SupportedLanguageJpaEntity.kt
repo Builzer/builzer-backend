@@ -16,6 +16,7 @@ class SupportedLanguageJpaEntity(
         @Column(name = "language_version", nullable = false, updatable = false)
         val languageVersion: Float,
 
+        @Enumerated(EnumType.STRING)
         @Column(name = "language_provider", nullable = false, updatable = false)
         val languageProvider: LanguageProvider,
 
