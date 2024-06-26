@@ -26,17 +26,17 @@ class BuildHistoryJpaEntity(
         @Column(name = "status", nullable = false)
         val status: BuildStatus,
 
-        @Column(name = "last_commit", updatable = false)
-        val lastCommit: String,
-
-        @Column(name = "commit_info", updatable = false)
-        val commitInfo: String,
-
         @Column(name = "build_time", nullable = false, updatable = false)
         val buildTime: Int,
 
         @Column(name = "executor", nullable = false, updatable = false)
-        val executor: String
+        val executor: String,
+
+        @Column(name = "last_commit", updatable = false)
+        val lastCommit: String? = null,
+
+        @Column(name = "commit_info", updatable = false)
+        val commitInfo: String? = null
 
 ) : BaseTimeEntity() {
 
