@@ -22,7 +22,7 @@ class ProjectMemberJpaEntity(
         val memberJpaEntity: MemberJpaEntity,
 
         @Enumerated(EnumType.STRING)
-        @Column(name = "plan_name", nullable = false, updatable = false)
+        @Column(name = "project_authority", nullable = false, updatable = false)
         val projectAuthority: ProjectAuthority
 
 ) : BaseTimeEntity()
