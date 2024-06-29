@@ -43,6 +43,7 @@ class GlobalExceptionHandler {
         return ApiResponse.badRequest(message)
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable::class)
     fun handleGlobalException(e: Throwable): ApiResponse<String> {
         log.error(e.stackTraceToString())

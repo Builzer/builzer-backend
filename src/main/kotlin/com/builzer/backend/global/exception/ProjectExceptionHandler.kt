@@ -21,7 +21,7 @@ class ProjectExceptionHandler {
     }
 
     fun ConflictingDomainExistsException.toApiResponse(): ApiResponse<String> {
-        val message = this.errorMessage ?: "Conflict Request"
+        val message = this.errorMessage ?: "Conflict"
         return ApiResponse.conflict(message)
     }
 
