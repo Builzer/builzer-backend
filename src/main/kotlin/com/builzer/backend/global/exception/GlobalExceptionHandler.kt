@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
@@ -20,6 +21,7 @@ class GlobalExceptionHandler {
 
     val log = logger()
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleMethodArgumentNotValidException(e: MethodArgumentNotValidException): ApiResponse<String> {
         return e.toApiResponse()
@@ -30,6 +32,7 @@ class GlobalExceptionHandler {
         return ApiResponse.badRequest(message)
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BadRequestException::class)
     fun handleBadRequestException(e: BadRequestException): ApiResponse<String> {
         return e.toApiResponse()
