@@ -40,6 +40,14 @@ class ApiResponse<T> private constructor(
             )
         }
 
+        fun <T> conflict(data: T): ApiResponse<T> {
+            return ApiResponse(
+                    code = HttpStatus.CONFLICT.value(),
+                    message = HttpStatus.CONFLICT.reasonPhrase,
+                    data = data
+            )
+        }
+
         fun <T> of(data: T, code: HttpStatus): ApiResponse<T> {
             return ApiResponse(
                 code = code.value(),
