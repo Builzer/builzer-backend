@@ -17,7 +17,7 @@ import org.springframework.test.context.TestConstructor
 @SpringBootTest
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class ProjectDeployAdaptorTest(
-        val testRoute53Client: AmazonRoute53,
+        val testRoute53Client: AmazonRoute53 = mockk(),
         val projectDeployAdaptor: ProjectDeployAdaptor
 ) : BehaviorSpec({
 

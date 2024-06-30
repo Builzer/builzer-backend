@@ -6,6 +6,7 @@ import com.amazonaws.services.route53.model.ListResourceRecordSetsResult
 import com.amazonaws.services.route53.model.ResourceRecordSet
 import io.kotest.core.spec.style.BehaviorSpec
 import io.mockk.every
+import io.mockk.mockk
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpStatus
@@ -21,8 +22,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 @AutoConfigureMockMvc
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class ProjectWebAdapterTest(
-        val mockMvc: MockMvc,
-        val testRoute53Client: AmazonRoute53
+        private val mockMvc: MockMvc,
+        private val testRoute53Client: AmazonRoute53 = mockk()
 ) : BehaviorSpec({
 
     beforeTest {
