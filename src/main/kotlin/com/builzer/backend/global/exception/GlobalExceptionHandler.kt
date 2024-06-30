@@ -2,18 +2,14 @@ package com.builzer.backend.global.exception
 
 import com.builzer.backend.global.response.ApiResponse
 import com.builzer.backend.logger
+import feign.FeignException
 import org.apache.coyote.BadRequestException
 import org.springframework.core.annotation.Order
-import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import org.springframework.web.context.request.WebRequest
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @Order(9999)
 @RestControllerAdvice
@@ -50,6 +46,20 @@ class GlobalExceptionHandler {
         return ApiResponse.of(
             code = HttpStatus.INTERNAL_SERVER_ERROR,
             data = "Internal Server Error"
+        )
+    }
+
+    @ExceptionHandler(FeignException::class)
+    fun handleFeignException(e: FeignException): ApiResponse<String> {
+        return e.toApiResponse()
+    }
+
+    fun FeignException.toApiResponse(): ApiResponse<String> {
+        val message = this.message ?: "External API Error"
+        val statusCode = this.status()
+        return ApiResponse.of(
+            code = HttpStatus.valueOf(statusCode),
+            data = message
         )
     }
 
