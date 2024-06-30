@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
     kotlin("kapt") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.24"
 }
 
 group = "com.builzer"
@@ -54,9 +55,9 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
 
     // wireMock
-//    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock:4.0.4")
     testImplementation("io.kotest.extensions:kotest-extensions-wiremock:3.1.0")
 
+    // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("io.github.openfeign:feign-okhttp")
 }

@@ -11,9 +11,9 @@ import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
 
 @Service
-class RepoInfoService (
+class RepoInfoService(
     private val githubRepoInfoClient: GithubRepoInfoClient
-): RepoInfoUseCase {
+) : RepoInfoUseCase {
 
     private val mapper = Mappers.getMapper(GithubMapper::class.java)
 
@@ -30,7 +30,6 @@ class RepoInfoService (
     ): List<RepoResponse> {
         // To do 깃헙 토큰
         val gitToken = ""
-
         if (orgName.isNullOrBlank()) {      // 개인 레포 목록
             val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(gitToken, possession)
             return mapper.toRepoInfo(githubRepoInfoResponse)
@@ -54,7 +53,8 @@ class RepoInfoService (
     ): List<RepoItemListResponse> {
         // To do 깃헙 토큰
         val gitToken = ""
-        val githubItemInfoResponse = githubRepoInfoClient.getItemInfo(gitToken, repoName, path, branch)
+        val githubItemInfoResponse =
+            githubRepoInfoClient.getItemInfo(gitToken, repoName, path, branch)
         return mapper.toItemInfo(githubItemInfoResponse)
     }
 

@@ -1,5 +1,5 @@
 package com.builzer.backend.project.adapter.out.client.response
 
-class GithubOrgInfoResponse (
+data class GithubOrgInfoResponse (
     val login: String
 )

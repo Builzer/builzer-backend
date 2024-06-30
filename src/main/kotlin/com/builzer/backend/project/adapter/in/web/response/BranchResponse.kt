@@ -1,5 +1,5 @@
 package com.builzer.backend.project.adapter.`in`.web.response
 
-class BranchResponse(
+data class BranchResponse(
     val branchName: String
 )

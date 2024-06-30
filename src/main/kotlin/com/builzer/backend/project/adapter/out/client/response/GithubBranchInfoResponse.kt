@@ -1,5 +1,5 @@
 package com.builzer.backend.project.adapter.out.client.response
 
-class GithubBranchInfoResponse(
+data class GithubBranchInfoResponse(
   val name: String
 )
