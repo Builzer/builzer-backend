@@ -4,6 +4,6 @@ data class OAuthResponse(
     val gitEmail: String,
     val profileImg: Int,
     val name: String,
-    val totalCredit: String,
+    val totalCredit: Int,
     val isInvited: Boolean
 )
