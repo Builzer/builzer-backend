@@ -1,6 +1,6 @@
 package com.builzer.backend.member.domain
 
-import java.time.LocalDateTime
+import java.sql.Timestamp
 
 class Member(
     val id: Long,
@@ -8,10 +8,10 @@ class Member(
     val name: String,
     val gitEmail: String,
     val gitAccessToken: String,
-    val lastLoginDate: LocalDateTime,
+    val lastLoginDate: Timestamp,
     val totalCredit: Int,
-    val quitDate: LocalDateTime?,
+    val quitDate: Timestamp?,
     val customerKey: String,
     val billingKey: String?,
-    val isInvited: Boolean
+    val isInvited: Boolean = false
 )
