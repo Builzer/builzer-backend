@@ -35,3 +35,14 @@ logging:
       amazonaws:
         util:
           EC2MetadataUtils: error
+
+jwt:
+  expiration:
+    access: 86400000
+    refresh: 86400000
+
+oauth:
+  github:
+    client-id: ${GITHUB_CLIENT_ID}
+    client-secret: ${GITHUB_CLIENT_SECRET}
+    callback-uri: ${GITHUB_CALLBACK_URI}

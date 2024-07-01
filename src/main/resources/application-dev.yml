@@ -25,3 +25,8 @@ logging:
       amazonaws:
         util:
           EC2MetadataUtils: error
+
+jwt:
+  expiration:
+    access: 86400000
+    refresh: 86400000
