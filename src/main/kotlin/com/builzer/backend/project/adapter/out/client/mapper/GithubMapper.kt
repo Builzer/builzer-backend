@@ -31,7 +31,10 @@ interface GithubMapper {
     fun toRepoInfo(githubRepoInfoResponse: GithubRepoInfoResponse): RepoResponse
     fun toRepoInfo(githubRepoInfoResponse: List<GithubRepoInfoResponse>): List<RepoResponse>
 
-    @Mapping(source = "name", target = "branchName")
+    @Mappings(
+        Mapping(source = "name", target = "branchName"),
+        Mapping(source = "commit.sha", target = "value")
+    )
     fun toBranchInfo(githubBranchInfoResponse: GithubBranchInfoResponse): BranchResponse
     fun toBranchInfo(githubBranchInfoResponse: List<GithubBranchInfoResponse>): List<BranchResponse>
 
