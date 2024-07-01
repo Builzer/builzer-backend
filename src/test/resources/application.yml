@@ -1,0 +1,10 @@
+jwt:
+  expiration:
+    access: 1000
+    refresh: 1000
+
+oauth:
+  github:
+    client-id: test
+    client-secret: test
+    callback-uri: test
