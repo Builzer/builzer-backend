@@ -1,0 +1,34 @@
+[
+  {
+    "name": "main",
+    "path": "src/main",
+    "sha": "b3ea1xxxxxxxxxxxxxxxca05799cb29520",
+    "size": 0,
+    "url": "https://api.github.com/repos/Builzer/builzer-backend/contents/src/main?ref=develop",
+    "html_url": "https://github.com/Builzer/builzer-backend/tree/develop/src/main",
+    "git_url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/b3ea1f6be86110a75bdc604811ca05799cb29520",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/Builzer/builzer-backend/contents/src/main?ref=develop",
+      "git": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/b3ea1f6be86110a75bdc604811ca05799cb29520",
+      "html": "https://github.com/Builzer/builzer-backend/tree/develop/src/main"
+    }
+  },
+  {
+    "name": "test",
+    "path": "src/test",
+    "sha": "12e94a0ffxxxxxxxxxxxxxxx95a1ecc3057",
+    "size": 0,
+    "url": "https://api.github.com/repos/Builzer/builzer-backend/contents/src/test?ref=develop",
+    "html_url": "https://github.com/Builzer/builzer-backend/tree/develop/src/test",
+    "git_url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/12e94a0ff31da36ab5c7918e2d3b895a1ecc3057",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/Builzer/builzer-backend/contents/src/test?ref=develop",
+      "git": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/12e94a0ff31da36ab5c7918e2d3b895a1ecc3057",
+      "html": "https://github.com/Builzer/builzer-backend/tree/develop/src/test"
+    }
+  }
+]
