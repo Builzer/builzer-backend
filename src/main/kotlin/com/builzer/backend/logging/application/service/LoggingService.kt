@@ -15,7 +15,7 @@ class LoggingService(
         val timestamp: Timestamp = Timestamp.valueOf(date.atStartOfDay())
         val key: String = generateKey(projectId, timestamp)
 
-        return s3Port.getPreSignedUrl(key);
+        return s3Port.getPreSignedUrl(key)
     }
 
     private fun generateKey(projectId: Long, timestamp: Timestamp): String {

@@ -4,9 +4,7 @@ import com.builzer.backend.global.response.ApiResponse
 import com.builzer.backend.logging.application.port.`in`.LoggingUseCase
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.web.bind.annotation.*
-import java.sql.Timestamp
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/logging")
@@ -23,6 +21,6 @@ class LoggingWebAdapter(
     ): ApiResponse<String> {
 
         val response = loggingUseCase.getUrlForLogDown(projectId, date)
-        return ApiResponse.ok(response);
+        return ApiResponse.ok(response)
     }
 }
