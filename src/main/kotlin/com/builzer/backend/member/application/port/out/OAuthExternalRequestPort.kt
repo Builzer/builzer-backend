@@ -1,6 +1,6 @@
 package com.builzer.backend.member.application.port.out
 
-import com.builzer.backend.member.application.port.`in`.response.UserInfoFromGithub
+import com.builzer.backend.member.application.port.`in`.result.UserInfoFromGithub
 
 interface OAuthExternalRequestPort {
     fun requestUserInfo(githubAccessToken: String): UserInfoFromGithub

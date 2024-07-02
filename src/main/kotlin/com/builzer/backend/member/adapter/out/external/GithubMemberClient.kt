@@ -1,7 +1,7 @@
 package com.builzer.backend.member.adapter.out.external
 
 import com.builzer.backend.global.config.feign.GithubClientConfig
-import com.builzer.backend.member.application.port.`in`.response.UserInfoFromGithub
+import com.builzer.backend.member.application.port.`in`.result.UserInfoFromGithub
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.HttpHeaders
 import org.springframework.web.bind.annotation.GetMapping

@@ -1,7 +1,7 @@
 package com.builzer.backend.member.adapter.out.external
 
 import com.builzer.backend.member.adapter.out.external.request.OAuthExternalRequest
-import com.builzer.backend.member.application.port.`in`.response.UserInfoFromGithub
+import com.builzer.backend.member.application.port.`in`.result.UserInfoFromGithub
 import com.builzer.backend.member.application.port.out.OAuthExternalRequestPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders

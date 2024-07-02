@@ -4,7 +4,7 @@ import com.builzer.backend.global.util.JwtUtil
 import com.builzer.backend.member.application.port.`in`.OAuthUseCase
 import com.builzer.backend.member.application.port.`in`.command.CreateOrReadCommand
 import com.builzer.backend.member.application.port.`in`.command.OAuthCommand
-import com.builzer.backend.member.application.port.`in`.response.OAuthResponse
+import com.builzer.backend.member.application.port.`in`.result.OAuthResult
 import com.builzer.backend.member.application.port.out.MemberPort
 import com.builzer.backend.member.application.port.out.OAuthExternalRequestPort
 import org.springframework.stereotype.Service
@@ -15,7 +15,7 @@ class OAuthService(
     private val oAuthExternalRequestPort: OAuthExternalRequestPort,
     private val jwtUtil: JwtUtil
 ) : OAuthUseCase {
-    override fun signInOrSignUp(oAuthCommand: OAuthCommand): OAuthResponse {
+    override fun signInOrSignUp(oAuthCommand: OAuthCommand): OAuthResult {
         // retrieve access token from GitHub
         val githubAccessToken = oAuthExternalRequestPort.requestGithubAccessToken(oAuthCommand.code)
 
@@ -47,7 +47,7 @@ class OAuthService(
                 gitAccessToken = member.gitAccessToken
             )
 
-        return OAuthResponse(
+        return OAuthResult(
             member = member,
             accessToken = accessToken,
             refreshToken = refreshToken
