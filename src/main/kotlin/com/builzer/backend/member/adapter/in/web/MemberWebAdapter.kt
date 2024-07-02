@@ -38,8 +38,8 @@ class MemberWebAdapter(
             isInvited = response.member.isInvited
         )
 
-        httpResponse.setHeader("Access-Token", response.accessToken)
-        httpResponse.setHeader("Refresh-Token", response.refreshToken)
+        httpResponse.addHeader("Access-Token", response.accessToken)
+        httpResponse.addHeader("Refresh-Token", response.refreshToken)
         return ApiResponse.ok(oauthResponse)
     }
 }
