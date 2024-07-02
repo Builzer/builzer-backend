@@ -27,7 +27,7 @@ class JwtAuthenticationFilter(private val jwtUtil: JwtUtil) : OncePerRequestFilt
             val parsedClaim = jwtUtil.parseClaims(authorizationHeader)
             setAuthenticationToSecurityContext(parsedClaim)
             filterChain.doFilter(request, response)
-        } catch (e: Exception) { //
+        } catch (e: Exception) { // throws exception when token is expired
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.localizedMessage)
         }
     }
