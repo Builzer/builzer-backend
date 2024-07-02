@@ -18,7 +18,6 @@ class SecurityConfig {
                 auth
                     .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers("/favicon.ico").permitAll()
-                    .requestMatchers("/**").permitAll()
                     .anyRequest().authenticated()
             }
             .csrf { csrf ->
