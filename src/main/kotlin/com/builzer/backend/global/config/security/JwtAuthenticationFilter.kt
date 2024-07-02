@@ -7,10 +7,9 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpHeaders
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 
-@Component
+// @Component TODO 로그인 통합 테스트 이후 해제
 class JwtAuthenticationFilter(private val jwtUtil: JwtUtil) : OncePerRequestFilter() {
     override fun doFilterInternal(
         request: HttpServletRequest,
