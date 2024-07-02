@@ -4,11 +4,9 @@ import com.builzer.backend.global.config.security.MemberPayload
 import feign.RequestInterceptor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 import org.springframework.http.HttpHeaders
 import org.springframework.security.core.context.SecurityContextHolder
 
-@Profile("!test")
 @Configuration
 class GithubClientConfig {
     @Bean
