@@ -20,3 +20,10 @@ management:
   health:
     db:
       enabled: false
+
+aws:
+  accessKeyId: ${AWS_ACCESS_KEY_ID}
+  secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+  region: ap-northeast-2
+  route53:
+    hostedZoneId: ${AWS_ROUTE53_HOSTED_ZONE_ID}
