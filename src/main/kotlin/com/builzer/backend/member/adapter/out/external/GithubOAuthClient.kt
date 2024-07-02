@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 
 @FeignClient(
     name = "GithubOAuthClient",
-    url = "https://github.com",
+    url = "\${feign.endpoint.github.oauth}",
     configuration = [GithubClientConfig::class]
 )
 interface GithubOAuthClient {

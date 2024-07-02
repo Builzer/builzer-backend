@@ -41,6 +41,12 @@ jwt:
     access: 86400000
     refresh: 86400000
 
+feign:
+  endpoint:
+    github:
+      api: https://api.github.com
+      oauth: https://github.com
+
 oauth:
   github:
     client-id: ${GITHUB_CLIENT_ID}

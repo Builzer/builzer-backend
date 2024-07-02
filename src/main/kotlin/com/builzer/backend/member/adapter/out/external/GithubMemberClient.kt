@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader
 
 @FeignClient(
     name = "GithubMemberClient",
-    url = "https://api.github.com",
+    url = "\${feign.endpoint.github.api}",
     configuration = [GithubClientConfig::class]
 )
 interface GithubMemberClient {

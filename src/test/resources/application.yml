@@ -8,3 +8,9 @@ oauth:
     client-id: test
     client-secret: test
     callback-uri: test
+
+feign:
+  endpoint:
+    github:
+      api: http://localhost:${wiremock.server.port}
+      oauth: http://localhost:${wiremock.server.port}
