@@ -13,12 +13,14 @@ import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.post
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+
 
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-@AutoConfigureWireMock(port = 0)
+@AutoConfigureWireMock(port = 8080)
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class MemberWebAdapterTests(
     private val mockMvc: MockMvc,
@@ -32,6 +34,7 @@ class MemberWebAdapterTests(
 
     afterEach {
         wireMockServer.stop()
+        wireMockServer.shutdownServer()
     }
 
     Given("github로부터 생성된 code를 통해") {
@@ -69,37 +72,23 @@ class MemberWebAdapterTests(
                     )
             )
 
-            val response = mockMvc.post("/member/oauth/github") {
-                contentType = MediaType.APPLICATION_JSON
-                content = request
-            }
+            val response = mockMvc.perform(
+                post("/member/oauth/github")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(request)
+            )
 
             Then("member 정보는 response body에, access token과 refresh token은 header에 반환된다") {
                 response.andExpect {
-                    status {
-                        isOk()
-                    }
+                    status().isOk
 
-                    header {
-                        exists("Refresh-Token")
-                        exists("Access-Token")
-                    }
+                    header().exists("Refresh-Token")
+                    header().exists("Access-Token")
 
-                    jsonPath("$.data.gitEmail") {
-                        value(mockedEmail)
-                    }
-
-                    jsonPath("$.data.name") {
-                        value(mockedName)
-                    }
-
-                    jsonPath("$.data.totalCredit") {
-                        value(0)
-                    }
-
-                    jsonPath("$.data.isInvited") {
-                        value(false)
-                    }
+                    jsonPath("$.data.gitEmail").value(mockedEmail)
+                    jsonPath("$.data.name").value(mockedName)
+                    jsonPath("$.data.totalCredit").value(0)
+                    jsonPath("$.data.isInvited").value(false)
                 }
             }
         }

@@ -21,20 +21,20 @@ spring:
         data-locations: classpath:data.sql
 jwt:
   expiration:
-    access: 1000
-    refresh: 1000
+    access: 2000
+    refresh: 2000
 
 oauth:
   github:
-    client-id: test
-    client-secret: test
-    callback-uri: test
+    client-id: "test"
+    client-secret: "test"
+    callback-uri: "test"
 
 feign:
   endpoint:
     github:
-      api: http://localhost:${wiremock.server.port}
-      oauth: http://localhost:${wiremock.server.port}
+      api: "http://localhost:8080"
+      oauth: "http://localhost:8080"
 aws:
   accessKeyId: "testAccessKeyId"
   secretAccessKey: "testSecretAccessKey"

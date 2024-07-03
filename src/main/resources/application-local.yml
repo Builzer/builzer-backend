@@ -44,8 +44,8 @@ jwt:
 feign:
   endpoint:
     github:
-      api: https://api.github.com
-      oauth: https://github.com
+      api: "https://api.github.com"
+      oauth: "https://github.com"
 
 oauth:
   github:

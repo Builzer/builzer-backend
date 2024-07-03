@@ -19,14 +19,14 @@ import org.springframework.test.context.TestConstructor
 @SpringBootTest
 @ActiveProfiles("test")
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
-@AutoConfigureWireMock(port = 0)
+@AutoConfigureWireMock(port = 8080)
 class OAuthServiceTests(
     private val oauthService: OAuthService,
     private val wireMockServer: WireMockServer = WireMockServer(
         WireMockConfiguration.options().dynamicPort()
     )
 ) : BehaviorSpec({
-    beforeTest {
+    beforeEach {
         wireMockServer.start()
     }
 
@@ -77,7 +77,8 @@ class OAuthServiceTests(
         }
     }
 
-    afterTest {
+    afterEach {
         wireMockServer.stop()
+        wireMockServer.shutdown()
     }
 })
