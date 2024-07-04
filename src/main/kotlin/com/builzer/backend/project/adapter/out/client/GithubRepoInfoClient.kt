@@ -27,13 +27,13 @@ interface GithubRepoInfoClient {
     @GetMapping("/orgs/{orgName}/repos")
     fun getOrgRepoInfo(
         @RequestHeader("Authorization") gitToken: String,
-        @PathVariable("orgName") orgName: String
+        @PathVariable(required = true) orgName: String
     ): List<GithubRepoInfoResponse>
 
     @GetMapping("/repos/{owner}/{repoName}/branches")
     fun getBranchInfo(
         @RequestHeader("Authorization") gitToken: String,
-        @PathVariable("owner") owner: String,
+        @PathVariable(required = true) owner: String,
         @PathVariable(required = true) repoName: String
     ): List<GithubBranchInfoResponse>
 
