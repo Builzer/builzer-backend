@@ -69,7 +69,7 @@ class RepoInfoServiceTest : FunSpec({
         val mappingResponse = mapper.toRepoInfo(githubRepoInfoResponse)
 
         for (index in mappingResponse.indices) {
-            githubRepoInfoResponse[index].full_name shouldBe mappingResponse[index].repoName
+            githubRepoInfoResponse[index].fullName shouldBe mappingResponse[index].repoName
             githubRepoInfoResponse[index].private shouldBe mappingResponse[index].isPrivate
         }
     }

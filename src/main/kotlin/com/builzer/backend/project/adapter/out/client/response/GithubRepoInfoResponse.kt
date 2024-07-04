@@ -1,8 +1,10 @@
 package com.builzer.backend.project.adapter.out.client.response
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class GithubRepoInfoResponse(
-    val full_name: String,
+    @JsonProperty("full_name") val fullName: String,
     val private: Boolean,
     val language: String?,
-    val updated_at: String?,
+    @JsonProperty("updated_at") val updatedAt: String?,
 )

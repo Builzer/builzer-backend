@@ -23,17 +23,17 @@ interface GithubMapper {
     fun toOrgInfo(githubOrgInfoResponse: List<GithubOrgInfoResponse>): List<OrgResponse>
 
     @Mappings(
-        Mapping(source = "full_name", target = "repoName"),
+        Mapping(source = "fullName", target = "repoName"),
         Mapping(source = "private", target = "isPrivate"),
         Mapping(source = "language", target = "projectType", defaultValue = "None"),
-        Mapping(source = "updated_at", target = "updatedAt", qualifiedByName = ["setUpdatedAt"])
+        Mapping(source = "updatedAt", target = "updatedAt", qualifiedByName = ["setUpdatedAt"])
     )
     fun toRepoInfo(githubRepoInfoResponse: GithubRepoInfoResponse): RepoResponse
     fun toRepoInfo(githubRepoInfoResponse: List<GithubRepoInfoResponse>): List<RepoResponse>
 
     @Mappings(
         Mapping(source = "name", target = "branchName"),
-        Mapping(source = "commit.sha", target = "value")
+        Mapping(source = "commit.sha", target = "sha")
     )
     fun toBranchInfo(githubBranchInfoResponse: GithubBranchInfoResponse): BranchResponse
     fun toBranchInfo(githubBranchInfoResponse: List<GithubBranchInfoResponse>): List<BranchResponse>
