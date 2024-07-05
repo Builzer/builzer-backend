@@ -21,31 +21,31 @@ class ProjectSpecJpaEntity(
         val supportedLanguageJpaEntity: SupportedLanguageJpaEntity,
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "supported_server_spec_id", nullable = false, updatable = false)
-        val supportedServerSpecJpaEntity: SupportedServerSpecJpaEntity,
+        @JoinColumn(name = "supported_server_id", nullable = false, updatable = false)
+        val supportedServerJpaEntity: SupportedServerJpaEntity,
 
-        @Column(name = "branch", nullable = false, updatable = false)
-        val branch: String,
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "supported_database_id")
+        var supportedDatabaseJpaEntity: SupportedDatabaseJpaEntity? = null,
 
-        @Column(name = "build_path", nullable = false, updatable = false)
-        val buildPath: String,
+        @Column(name = "git_repository_branch_name", nullable = false, updatable = false)
+        val gitRepositoryBranchName: String,
+
+        @Column(name = "build_root_path", nullable = false, updatable = false)
+        val buildRootPath: String,
 
         @Enumerated(EnumType.STRING)
         @Column(name = "build_tool", nullable = false, updatable = false)
         val buildTool: BuildTool,
 
+        @Column(name = "database_username")
+        var databaseUsername: String? = null,
+
+        @Column(name = "database_password")
+        var databasePassword: String? = null,
+
         @Column(name = "isRunTest", nullable = false)
         var isRunTest: Boolean,
-
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "supported_database_id")
-        var supportedDatebaseJpaEntity: SupportedDatebaseJpaEntity? = null,
-
-        @Column(name = "db_username")
-        var dbUsername: String? = null,
-
-        @Column(name = "db_password")
-        var dbPassword: String? = null,
 
         @Type(JsonType::class)
         @Column(name = "env", columnDefinition = "json")

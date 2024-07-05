@@ -18,16 +18,16 @@ class ProjectJpaEntity(
 
         @Enumerated(EnumType.STRING)
         @Column(name = "project_status", nullable = false)
-        val projectStatus: ProjectStatus,
+        val projectStatus: ProjectStatus = ProjectStatus.CREATING,
 
-        @Column(name = "domain", nullable = false, updatable = false)
-        val domain: String,
+        @Column(name = "project_domain_name", nullable = false, updatable = false)
+        val projectDomainName: String,
 
         @Column(name = "git_repository_name", nullable = false)
         val gitRepositoryName: String,
 
-        @Column(name = "is_private_repository", nullable = false)
-        val isPrivateRepository: Boolean,
+        @Column(name = "is_private_git_repository", nullable = false)
+        val isPrivateGitRepository: Boolean,
 
         @Column(name = "last_disabled_at")
         val lastDisabledAt: Timestamp? = null,

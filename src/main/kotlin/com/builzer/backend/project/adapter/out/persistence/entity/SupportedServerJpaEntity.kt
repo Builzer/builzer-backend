@@ -2,25 +2,27 @@ package com.builzer.backend.project.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.CloudProvider
+import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerName
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerType
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "supported_server_spec")
-class SupportedServerSpecJpaEntity(
-
-        @Column(name = "name", nullable = false)
-        val name: String,
-
-        @Column(name = "v_cpu", nullable = false)
-        val vCpu: String,
-
-        @Column(name = "memory", nullable = false)
-        val memory: String,
+@Table(name = "supported_server")
+class SupportedServerJpaEntity(
 
         @Enumerated(EnumType.STRING)
-        @Column(name = "type", nullable = false)
-        val type: ServerType,
+        @Column(name = "server_name", nullable = false)
+        val serverName: ServerName,
+
+        @Column(name = "server_v_cpu", nullable = false)
+        val serverVCpu: Int,
+
+        @Column(name = "server_memory", nullable = false)
+        val serverMemory: String,
+
+        @Enumerated(EnumType.STRING)
+        @Column(name = "server_type", nullable = false)
+        val serverType: ServerType,
 
         @Enumerated(EnumType.STRING)
         @Column(name = "cloud_provider", nullable = false)

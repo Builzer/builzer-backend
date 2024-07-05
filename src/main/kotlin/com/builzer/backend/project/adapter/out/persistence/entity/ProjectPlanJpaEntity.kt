@@ -1,7 +1,7 @@
 package com.builzer.backend.project.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
-import com.builzer.backend.project.adapter.out.persistence.entity.enums.ProjectPlan
+import com.builzer.backend.project.adapter.out.persistence.entity.enums.ProjectPlanType
 import jakarta.persistence.*
 
 @Entity
@@ -9,8 +9,8 @@ import jakarta.persistence.*
 class ProjectPlanJpaEntity(
 
         @Enumerated(EnumType.STRING)
-        @Column(name = "plan_name", nullable = false)
-        val planName: ProjectPlan,
+        @Column(name = "plan_type", nullable = false)
+        val planType: ProjectPlanType,
 
         @Column(name = "plan_price", nullable = false)
         val planPrice: Double,
