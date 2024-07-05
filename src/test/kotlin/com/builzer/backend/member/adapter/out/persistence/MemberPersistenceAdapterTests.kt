@@ -1,6 +1,6 @@
 package com.builzer.backend.member.adapter.out.persistence
 
-import com.builzer.backend.member.application.port.`in`.command.CreateOrReadCommand
+import com.builzer.backend.member.application.port.`in`.command.CreateOrReadMemberCommand
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -19,7 +19,7 @@ class MemberPersistenceAdapterTests(
         val name = "testName"
         val email = "testEmail"
 
-        val command = CreateOrReadCommand(
+        val command = CreateOrReadMemberCommand(
             githubAccessToken = githubAccessToken,
             name = name,
             email = email

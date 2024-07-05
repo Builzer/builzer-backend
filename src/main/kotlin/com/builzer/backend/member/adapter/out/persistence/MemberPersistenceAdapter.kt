@@ -2,7 +2,7 @@ package com.builzer.backend.member.adapter.out.persistence
 
 import com.builzer.backend.member.adapter.out.persistence.entity.MemberJpaEntity
 import com.builzer.backend.member.adapter.out.persistence.repository.MemberJpaRepository
-import com.builzer.backend.member.application.port.`in`.command.CreateOrReadCommand
+import com.builzer.backend.member.application.port.`in`.command.CreateOrReadMemberCommand
 import com.builzer.backend.member.application.port.out.MemberPort
 import com.builzer.backend.member.domain.Member
 import com.builzer.backend.member.util.MemberMapper
@@ -20,7 +20,7 @@ class MemberPersistenceAdapter(
     }
 
     @Transactional
-    override fun createOrRead(command: CreateOrReadCommand): Member {
+    override fun createOrRead(command: CreateOrReadMemberCommand): Member {
         // save() if findByGitEmail() is null
         val memberEntity =
             memberJpaRepository.findByGitEmail(command.email) ?: memberJpaRepository.save(

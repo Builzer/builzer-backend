@@ -2,7 +2,7 @@ package com.builzer.backend.member.application.service
 
 import com.builzer.backend.global.util.JwtUtil
 import com.builzer.backend.member.application.port.`in`.OAuthUseCase
-import com.builzer.backend.member.application.port.`in`.command.CreateOrReadCommand
+import com.builzer.backend.member.application.port.`in`.command.CreateOrReadMemberCommand
 import com.builzer.backend.member.application.port.`in`.command.OAuthCommand
 import com.builzer.backend.member.application.port.`in`.result.OAuthResult
 import com.builzer.backend.member.application.port.out.MemberPort
@@ -22,14 +22,14 @@ class OAuthService(
         // retrieve user info from GitHub with access token
         val userInfoFromGithub = oAuthExternalRequestPort.requestUserInfo(githubAccessToken)
 
-        val createOrReadCommand = CreateOrReadCommand(
+        val createOrReadMemberCommand = CreateOrReadMemberCommand(
             githubAccessToken = githubAccessToken,
             name = userInfoFromGithub.name,
             email = userInfoFromGithub.email
         )
 
         // get member info
-        val member = memberPort.createOrRead(createOrReadCommand)
+        val member = memberPort.createOrRead(createOrReadMemberCommand)
 
         // generate access token
         val accessToken =
