@@ -9,8 +9,8 @@ import jakarta.persistence.*
 import org.hibernate.annotations.Type
 
 @Entity
-@Table(name = "project_spec")
-class ProjectSpecJpaEntity(
+@Table(name = "project_detail")
+class ProjectDetailJpaEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "member_id", nullable = false, updatable = false)
@@ -54,7 +54,7 @@ class ProjectSpecJpaEntity(
 ) : BaseTimeEntity() {
 
     @Id
-    @Column(name = "project_spec_id")
+    @Column(name = "project_detail_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 }

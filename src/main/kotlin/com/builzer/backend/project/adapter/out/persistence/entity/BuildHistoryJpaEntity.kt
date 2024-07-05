@@ -13,8 +13,8 @@ class BuildHistoryJpaEntity(
         val projectJpaEntity: ProjectJpaEntity,
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "project_spec_id", nullable = false, updatable = false)
-        val projectSpecJpaEntity: ProjectSpecJpaEntity,
+        @JoinColumn(name = "project_detail_id", nullable = false, updatable = false)
+        val projectDetailJpaEntity: ProjectDetailJpaEntity,
 
         @Column(name = "build_script")
         val buildScript: String,

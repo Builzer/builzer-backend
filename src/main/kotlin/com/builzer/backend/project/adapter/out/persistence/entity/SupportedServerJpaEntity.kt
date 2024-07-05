@@ -40,7 +40,7 @@ class SupportedServerJpaEntity(
 ) : BaseTimeEntity() {
 
     @Id
-    @Column(name = "supported_server_spec_id")
+    @Column(name = "supported_server_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 }
