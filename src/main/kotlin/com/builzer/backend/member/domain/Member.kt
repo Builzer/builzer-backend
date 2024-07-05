@@ -8,7 +8,7 @@ class Member(
     val name: String,
     val gitEmail: String,
     val gitAccessToken: String,
-    val lastLoginDate: Timestamp,
+    val lastLoginAt: Timestamp,
     val totalCredit: Int,
     val quitDate: Timestamp?,
     val customerKey: String,
