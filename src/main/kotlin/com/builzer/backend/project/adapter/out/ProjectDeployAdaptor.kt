@@ -27,7 +27,7 @@ class ProjectDeployAdaptor(private val route53Client: AmazonRoute53) : ProjectDe
     override fun getRegisteredDomainNames(route53ResourceRecordSets: List<ResourceRecordSet>)
             : MutableList<String> {
         return route53ResourceRecordSets.map { resourceRecordSet ->
-            resourceRecordSet.name.removeSuffix(".")
+            resourceRecordSet.name.removeSuffix(DOMAIN_DELIMITER)
         }.toMutableList()
     }
 
