@@ -4,6 +4,8 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.services.route53.AmazonRoute53
 import com.amazonaws.services.route53.AmazonRoute53ClientBuilder
+import com.amazonaws.services.s3.AmazonS3
+import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -30,5 +32,15 @@ class AwsConfig {
                 .withRegion(region)
                 .withCredentials(AWSStaticCredentialsProvider(credentials))
                 .build()
+    }
+
+    @Bean
+    fun s3Client(): AmazonS3 {
+        val credentials = BasicAWSCredentials(accessKeyId, secretAccessKey)
+
+        return AmazonS3ClientBuilder.standard()
+            .withRegion(region)
+            .withCredentials(AWSStaticCredentialsProvider(credentials))
+            .build()
     }
 }
