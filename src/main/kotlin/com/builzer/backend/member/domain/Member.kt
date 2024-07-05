@@ -1,5 +1,6 @@
 package com.builzer.backend.member.domain
 
+import java.math.BigDecimal
 import java.sql.Timestamp
 
 class Member(
@@ -9,7 +10,7 @@ class Member(
     val gitEmail: String,
     val gitAccessToken: String,
     val lastLoginAt: Timestamp,
-    val totalCredit: Int,
+    val totalCredit: BigDecimal,
     val quitDate: Timestamp?,
     val customerKey: String,
     val billingKey: String?,

@@ -2,6 +2,7 @@ package com.builzer.backend.member.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
 import jakarta.persistence.*
+import java.math.BigDecimal
 import java.sql.Timestamp
 import java.time.LocalDateTime
 import java.util.*
@@ -33,8 +34,8 @@ class MemberJpaEntity(
     )
     var lastLoginAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
 
-    @Column(name = "total_credit", nullable = false)
-    var totalCredit: Int = 0,
+    @Column(name = "total_credit", nullable = false, precision = 10, scale = 2)
+    var totalCredit: BigDecimal = BigDecimal.ZERO,
 
     @Column(name = "quit_date")
     var quitDate: Timestamp? = null,
