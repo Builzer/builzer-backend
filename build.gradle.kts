@@ -74,6 +74,9 @@ dependencies {
 
     // aws route53
     implementation("com.amazonaws:aws-java-sdk-route53:1.12.751")
+
+    // aws s3
+    implementation("com.amazonaws:aws-java-sdk-s3:1.12.751")
 }
 
 kotlin {
