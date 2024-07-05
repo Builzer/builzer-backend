@@ -2,6 +2,7 @@ package com.builzer.backend.global.util
 
 import com.builzer.backend.global.config.security.JwtAuthenticationToken
 import com.builzer.backend.global.config.security.MemberPayload
+import com.builzer.backend.global.constant.SecurityConst
 import io.jsonwebtoken.*
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
@@ -47,7 +48,7 @@ class JwtUtil {
         IllegalArgumentException::class
     )
     fun parseClaims(bearerToken: String): Claims {
-        val token = bearerToken.replace("Bearer ", "")
+        val token = bearerToken.replace(SecurityConst.BEARER_PREFIX.value, "")
         return Jwts.parserBuilder()
             .setSigningKey(key)
             .build()

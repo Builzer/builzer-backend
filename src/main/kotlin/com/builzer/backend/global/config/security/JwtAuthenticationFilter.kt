@@ -1,5 +1,6 @@
 package com.builzer.backend.global.config.security
 
+import com.builzer.backend.global.constant.SecurityConst
 import com.builzer.backend.global.util.JwtUtil
 import io.jsonwebtoken.Claims
 import jakarta.servlet.FilterChain
@@ -18,7 +19,7 @@ class JwtAuthenticationFilter(private val jwtUtil: JwtUtil) : OncePerRequestFilt
     ) {
         val authorizationHeader: String = request.getHeader(HttpHeaders.AUTHORIZATION)
 
-        if (!authorizationHeader.startsWith("Bearer ")) {
+        if (!authorizationHeader.startsWith(SecurityConst.BEARER_PREFIX.value)) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized")
             return
         }
