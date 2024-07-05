@@ -15,7 +15,7 @@ class MemberJpaEntity(
     var id: Long? = null,
 
     @Column(name = "profile_img", nullable = false)
-    var profileImg: Int = Random.nextInt(1, 11), // TODO : 숫자 범위 정윤이한테 체크
+    var profileImg: Int = Random.nextInt(1, 11),
 
     @Column(name = "name", nullable = false)
     var name: String,
@@ -27,11 +27,11 @@ class MemberJpaEntity(
     var gitAccessToken: String,
 
     @Column(
-        name = "last_login_date",
+        name = "last_login_at",
         nullable = false,
         columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
     )
-    var lastLoginDate: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
+    var lastLoginAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
 
     @Column(name = "total_credit", nullable = false)
     var totalCredit: Int = 0,
