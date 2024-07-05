@@ -41,6 +41,8 @@ aws:
   region: ap-northeast-2
   route53:
     hostedZoneId: "testHostedZoneId"
+  s3:
+    memberLogBucket: "testMemberLogBucket"
 
 logging:
   level:
