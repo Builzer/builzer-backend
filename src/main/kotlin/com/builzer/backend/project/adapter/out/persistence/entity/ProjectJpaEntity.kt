@@ -10,7 +10,7 @@ import java.sql.Timestamp
 class ProjectJpaEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "project_plan_id", nullable = false, updatable = false)
+        @JoinColumn(name = "project_plan_id", nullable = false)
         val projectPlanJpaEntity: ProjectPlanJpaEntity,
 
         @Column(name = "project_name", nullable = false)

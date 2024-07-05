@@ -28,14 +28,14 @@ class ProjectDetailJpaEntity(
         @JoinColumn(name = "supported_database_id")
         var supportedDatabaseJpaEntity: SupportedDatabaseJpaEntity? = null,
 
-        @Column(name = "git_repository_branch_name", nullable = false, updatable = false)
+        @Column(name = "git_repository_branch_name", nullable = false)
         val gitRepositoryBranchName: String,
 
-        @Column(name = "build_root_path", nullable = false, updatable = false)
+        @Column(name = "build_root_path", nullable = false)
         val buildRootPath: String,
 
         @Enumerated(EnumType.STRING)
-        @Column(name = "build_tool", nullable = false, updatable = false)
+        @Column(name = "build_tool", nullable = false)
         val buildTool: BuildTool,
 
         @Column(name = "database_username")
