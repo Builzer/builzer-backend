@@ -16,9 +16,7 @@ class RepoInfoService(
     private val mapper = Mappers.getMapper(GithubMapper::class.java)
 
     override fun getOrgList(): List<OrgResponse> {
-        // To do 깃헙 토큰
-        val gitToken = ""
-        val githubRepoInfoResponse = githubRepoInfoClient.getOrgInfo(gitToken)
+        val githubRepoInfoResponse = githubRepoInfoClient.getOrgInfo()
         return mapper.toOrgInfo(githubRepoInfoResponse)
     }
 
@@ -26,21 +24,17 @@ class RepoInfoService(
         possession: String,
         orgName: String?
     ): List<RepoResponse> {
-        // To do 깃헙 토큰
-        val gitToken = ""
         if (orgName.isNullOrBlank()) {      // 개인 레포 목록
-            val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(gitToken, possession)
+            val githubRepoInfoResponse = githubRepoInfoClient.getRepoInfo(possession)
             return mapper.toRepoInfo(githubRepoInfoResponse)
         } else {                            // 조직 레포 목록
-            val githubRepoInfoResponse = githubRepoInfoClient.getOrgRepoInfo(gitToken, orgName)
+            val githubRepoInfoResponse = githubRepoInfoClient.getOrgRepoInfo(orgName)
             return mapper.toRepoInfo(githubRepoInfoResponse)
         }
     }
 
     override fun getBranchList(owner: String, repoName: String): List<BranchResponse> {
-        // To do 깃헙 토큰
-        val gitToken = ""
-        val githubBranchResponse = githubRepoInfoClient.getBranchInfo(gitToken, owner, repoName)
+        val githubBranchResponse = githubRepoInfoClient.getBranchInfo(owner, repoName)
         return mapper.toBranchInfo(githubBranchResponse)
     }
 
@@ -50,17 +44,13 @@ class RepoInfoService(
         branch: String,
         path: String
     ): List<RepoItemListResponse> {
-        // To do 깃헙 토큰
-        val gitToken = ""
         val githubItemInfoResponse =
-            githubRepoInfoClient.getItemInfo(gitToken, owner, repoName, path, branch)
+            githubRepoInfoClient.getItemInfo(owner, repoName, path, branch)
         return mapper.toItemInfo(githubItemInfoResponse)
     }
 
     override fun getRepoTreeList(owner: String, repoName: String, sha: String): List<RepoTreeResponse> {
-        // To do 깃헙 토큰
-        val gitToken = ""
-        val githubTreeResponse = githubRepoInfoClient.getTreeInfo(gitToken, owner, repoName, sha, 1)
+        val githubTreeResponse = githubRepoInfoClient.getTreeInfo(owner, repoName, sha, 1)
 
         // depth 내림차순 정렬 맵
         val comparator = compareByDescending<Pair<Int, String>> { it.first }
