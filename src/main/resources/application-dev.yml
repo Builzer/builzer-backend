@@ -29,10 +29,16 @@ logging:
 feign:
   endpoint:
     github:
-      api: https://api.github.com
-      oauth: https://github.com
+      api: "https://api.github.com"
+      oauth: "https://github.com"
 
 jwt:
   expiration:
-    access: 86400000
+    access: 3600000
     refresh: 86400000
+
+oauth:
+  github:
+    client-id: ${GITHUB_CLIENT_ID}
+    client-secret: ${GITHUB_CLIENT_SECRET}
+    callback-uri: ${GITHUB_CALLBACK_URI}

@@ -36,16 +36,16 @@ logging:
         util:
           EC2MetadataUtils: error
 
-jwt:
-  expiration:
-    access: 86400000
-    refresh: 86400000
-
 feign:
   endpoint:
     github:
       api: "https://api.github.com"
       oauth: "https://github.com"
+
+jwt:
+  expiration:
+    access: 86400000
+    refresh: 86400000
 
 oauth:
   github:
