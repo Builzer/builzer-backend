@@ -27,3 +27,5 @@ aws:
   region: ap-northeast-2
   route53:
     hostedZoneId: ${AWS_ROUTE53_HOSTED_ZONE_ID}
+  s3:
+    memberLogBucket: ${AWS_S3_MEMBER_LOG_BUCKET}

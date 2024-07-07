@@ -76,6 +76,14 @@ dependencies {
 
     // aws route53
     implementation("com.amazonaws:aws-java-sdk-route53:1.12.751")
+
+    // jwt
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    // aws s3
+    implementation("com.amazonaws:aws-java-sdk-s3:1.12.751")
 }
 
 kotlin {

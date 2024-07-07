@@ -2,7 +2,11 @@ package com.builzer.backend.member.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
 import jakarta.persistence.*
+import java.math.BigDecimal
+import java.sql.Timestamp
 import java.time.LocalDateTime
+import java.util.*
+import kotlin.random.Random
 
 @Entity(name = "member")
 class MemberJpaEntity(
@@ -12,7 +16,7 @@ class MemberJpaEntity(
     var id: Long? = null,
 
     @Column(name = "profile_img", nullable = false)
-    var profileImg: Int,
+    var profileImg: Int = Random.nextInt(1, 11),
 
     @Column(name = "name", nullable = false)
     var name: String,
@@ -23,19 +27,23 @@ class MemberJpaEntity(
     @Column(name = "git_access_token", nullable = false)
     var gitAccessToken: String,
 
-    @Column(name = "last_login_date", nullable = false)
-    var lastLoginDate: LocalDateTime,
+    @Column(
+        name = "last_login_at",
+        nullable = false,
+        columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+    )
+    var lastLoginAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
 
-    @Column(name = "total_credit", nullable = false)
-    var totalCredit: Int,
+    @Column(name = "total_credit", nullable = false, precision = 10, scale = 2)
+    var totalCredit: BigDecimal = BigDecimal.ZERO,
 
     @Column(name = "quit_date")
-    var quitDate: LocalDateTime?,
+    var quitDate: Timestamp? = null,
 
-    @Column(name = "customer_key", nullable = false)
-    var customerKey: String,
+    @Column(name = "customer_key", nullable = false, unique = true)
+    var customerKey: UUID = UUID.randomUUID(),
 
     @Column(name = "billing_key")
-    var billingKey: String?
+    var billingKey: String? = null
 
 ) : BaseTimeEntity()
