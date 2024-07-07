@@ -6,10 +6,6 @@ import com.builzer.backend.project.adapter.out.persistence.entity.json.ProjectEn
 
 class ProjectDetail private constructor(
         val id: Long,
-        val projectId: Long,
-        val supportedLanguageId: Long,
-        val supportedServerId: Long,
-        val supportedDatabaseId: Long?,
         val gitRepositoryBranchName: String,
         val buildRootPath: String,
         val buildTool: BuildTool,
@@ -23,10 +19,6 @@ class ProjectDetail private constructor(
         fun of(projectDetailJpaEntity: ProjectDetailJpaEntity): ProjectDetail {
             return ProjectDetail(
                     id = projectDetailJpaEntity.id!!,
-                    projectId = projectDetailJpaEntity.projectJpaEntity.id!!,
-                    supportedLanguageId = projectDetailJpaEntity.supportedLanguageJpaEntity.id!!,
-                    supportedServerId = projectDetailJpaEntity.supportedServerJpaEntity.id!!,
-                    supportedDatabaseId = projectDetailJpaEntity.supportedDatabaseJpaEntity?.id!!,
                     gitRepositoryBranchName = projectDetailJpaEntity.gitRepositoryBranchName,
                     buildRootPath = projectDetailJpaEntity.buildRootPath,
                     buildTool = projectDetailJpaEntity.buildTool,

@@ -5,7 +5,6 @@ import com.builzer.backend.project.adapter.out.persistence.entity.enums.ProjectS
 
 class Project private constructor(
         val id: Long,
-        val projectPlanId: Long,
         val projectName: String,
         val projectStatus: ProjectStatus,
         val projectDomainName: String,
@@ -17,7 +16,6 @@ class Project private constructor(
         fun of(projectJpaEntity: ProjectJpaEntity): Project {
             return Project(
                     id = projectJpaEntity.id!!,
-                    projectPlanId = projectJpaEntity.projectPlanJpaEntity.id!!,
                     projectName = projectJpaEntity.projectName,
                     projectStatus = projectJpaEntity.projectStatus,
                     projectDomainName = projectJpaEntity.projectDomainName,

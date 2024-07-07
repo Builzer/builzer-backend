@@ -1,7 +1,6 @@
 package com.builzer.backend.project.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
-import com.builzer.backend.member.adapter.out.persistence.entity.MemberJpaEntity
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.BuildTool
 import com.builzer.backend.project.adapter.out.persistence.entity.json.ProjectEnv
 import com.vladmihalcea.hibernate.type.json.JsonType
@@ -13,14 +12,6 @@ import org.hibernate.annotations.Type
 class ProjectDetailJpaEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "project_id", nullable = false, updatable = false)
-        val projectJpaEntity: ProjectJpaEntity,
-
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "member_id", nullable = false, updatable = false)
-        val memberJpaEntity: MemberJpaEntity,
-
-        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "supported_language_id", nullable = false, updatable = false)
         val supportedLanguageJpaEntity: SupportedLanguageJpaEntity,
 
@@ -29,7 +20,7 @@ class ProjectDetailJpaEntity(
         val supportedServerJpaEntity: SupportedServerJpaEntity,
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "supported_database_id")
+        @JoinColumn(name = "supported_database_id", updatable = false)
         var supportedDatabaseJpaEntity: SupportedDatabaseJpaEntity? = null,
 
         @Column(name = "git_repository_branch_name", nullable = false)
@@ -61,4 +52,8 @@ class ProjectDetailJpaEntity(
     @Column(name = "project_detail_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id", nullable = false, updatable = false)
+    var projectJpaEntity: ProjectJpaEntity? = null
 }

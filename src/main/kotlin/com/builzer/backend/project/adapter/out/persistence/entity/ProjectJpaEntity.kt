@@ -10,18 +10,11 @@ import java.sql.Timestamp
 
 @Entity
 @Table(name = "project")
-class ProjectJpaEntity(
+class ProjectJpaEntity private constructor(
 
         @ManyToOne(fetch = LAZY)
         @JoinColumn(name = "project_plan_id", nullable = false)
         val projectPlanJpaEntity: ProjectPlanJpaEntity,
-
-        @OneToMany(
-                mappedBy = "projectJpaEntity",
-                cascade = [PERSIST, REMOVE],
-                orphanRemoval = true,
-                fetch = LAZY)
-        val projectDetailJpaEntity: List<ProjectDetailJpaEntity> = mutableListOf(),
 
         @Column(name = "project_name", nullable = false)
         val projectName: String,
@@ -51,4 +44,37 @@ class ProjectJpaEntity(
     @Column(name = "project_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
+
+    @OneToMany(
+            mappedBy = "projectJpaEntity",
+            cascade = [PERSIST, REMOVE],
+            orphanRemoval = true,
+            fetch = LAZY)
+    val projectDetailJpaEntities: MutableList<ProjectDetailJpaEntity> = mutableListOf()
+
+    constructor(
+            projectDetailJpaEntities: List<ProjectDetailJpaEntity>,
+            projectPlanJpaEntity: ProjectPlanJpaEntity,
+            projectName: String,
+            projectStatus: ProjectStatus = ProjectStatus.CREATING,
+            projectDomainName: String,
+            gitRepositoryName: String,
+            isPrivateGitRepository: Boolean,
+            lastDisabledAt: Timestamp? = null,
+            lastPaidAt: Timestamp? = null
+    ) : this(
+            projectPlanJpaEntity = projectPlanJpaEntity,
+            projectName = projectName,
+            projectStatus = projectStatus,
+            projectDomainName = projectDomainName,
+            gitRepositoryName = gitRepositoryName,
+            isPrivateGitRepository = isPrivateGitRepository,
+            lastDisabledAt = lastDisabledAt,
+            lastPaidAt = lastPaidAt
+    ) {
+        this.projectDetailJpaEntities.addAll(projectDetailJpaEntities)
+        projectDetailJpaEntities.forEach { projectDetailJpaEntity ->
+            projectDetailJpaEntity.projectJpaEntity = projectDetailJpaEntity.projectJpaEntity ?: this
+        }
+    }
 }
