@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 
 @Profile("!test")
@@ -14,15 +15,21 @@ class SecurityConfig {
     @Bean
     fun securityWebFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .authorizeHttpRequests { auth ->
-                auth
-                    .requestMatchers("/h2-console/**").permitAll()
-                    .requestMatchers("/favicon.ico").permitAll()
-                    .anyRequest().authenticated()
+            .authorizeHttpRequests { request ->
+                request.anyRequest().permitAll()
             }
             .csrf { csrf ->
-                csrf.ignoringRequestMatchers("/h2-console/**")
+                csrf.disable()
             }
+            .sessionManagement { session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            }
+
+        /* TODO 로그인 통합 테스트 이후 해제
+        http.addFilterAt(
+            JwtAuthenticationFilter(JwtUtil()),
+            UsernamePasswordAuthenticationFilter::class.java
+        )*/
 
         http.headers { header ->
             header.frameOptions { frameOptions ->
