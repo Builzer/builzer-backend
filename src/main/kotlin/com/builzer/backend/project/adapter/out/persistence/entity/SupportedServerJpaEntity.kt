@@ -5,6 +5,7 @@ import com.builzer.backend.project.adapter.out.persistence.entity.enums.CloudPro
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerName
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerType
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "supported_server")
@@ -29,10 +30,10 @@ class SupportedServerJpaEntity(
         val cloudProvider: CloudProvider,
 
         @Column(name = "dollar_price", nullable = false)
-        val dollarPrice: Double,
+        val dollarPrice: BigDecimal,
 
         @Column(name = "credit_price", nullable = false)
-        val creditPrice: Double,
+        val creditPrice: BigDecimal,
 
         @Column(name = "is_used", nullable = false)
         val isUsed: Boolean

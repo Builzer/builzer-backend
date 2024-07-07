@@ -13,6 +13,10 @@ import org.hibernate.annotations.Type
 class ProjectDetailJpaEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "project_id", nullable = false, updatable = false)
+        val projectJpaEntity: ProjectJpaEntity,
+
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "member_id", nullable = false, updatable = false)
         val memberJpaEntity: MemberJpaEntity,
 
