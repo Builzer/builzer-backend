@@ -1,6 +1,5 @@
 package com.builzer.backend.project.adapter.out.persistence
 
-import com.builzer.backend.project.adapter.out.SupportedLanguagePersistenceAdaptor
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.LanguageProvider
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.LanguageType
 import com.builzer.backend.project.adapter.out.persistence.repository.SupportedLanguageJpaRepository

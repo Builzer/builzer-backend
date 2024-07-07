@@ -1,19 +1,15 @@
 package com.builzer.backend.project.adapter.out.persistence
 
-import com.amazonaws.services.route53.model.ConflictingDomainExistsException
 import com.builzer.backend.project.adapter.out.persistence.entity.*
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.*
 import com.builzer.backend.project.adapter.out.persistence.entity.json.ProjectEnv
 import com.builzer.backend.project.adapter.out.persistence.repository.*
-import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import jakarta.persistence.EntityNotFoundException
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
-import java.math.BigDecimal
 
 @ActiveProfiles("test")
 @DataJpaTest

@@ -1,18 +1,17 @@
 package com.builzer.backend.project.adapter.out.persistence
 
-import com.builzer.backend.project.adapter.out.SupportedServerPersistenceAdaptor
-import com.builzer.backend.project.adapter.out.persistence.entity.enums.*
+import com.builzer.backend.project.adapter.out.persistence.entity.enums.CloudProvider
+import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerName
+import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerType
 import com.builzer.backend.project.adapter.out.persistence.repository.SupportedServerJpaRepository
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
 import java.math.BigDecimal
 
-@Import(SupportedServerPersistenceAdaptor::class)
 @ActiveProfiles("test")
 @DataJpaTest
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
