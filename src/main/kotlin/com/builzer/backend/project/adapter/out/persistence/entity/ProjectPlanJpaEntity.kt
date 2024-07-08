@@ -3,6 +3,7 @@ package com.builzer.backend.project.adapter.out.persistence.entity
 import com.builzer.backend.global.entity.BaseTimeEntity
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.ProjectPlan
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "project_plan")
@@ -13,7 +14,7 @@ class ProjectPlanJpaEntity(
         val planName: ProjectPlan,
 
         @Column(name = "plan_price", nullable = false)
-        val planPrice: Double,
+        val planPrice: BigDecimal,
 
         @Column(name = "plan_explanation")
         val planExplanation: String? = null

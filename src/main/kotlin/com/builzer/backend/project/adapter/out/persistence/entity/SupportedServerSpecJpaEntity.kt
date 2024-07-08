@@ -4,33 +4,34 @@ import com.builzer.backend.global.entity.BaseTimeEntity
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.CloudProvider
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.ServerType
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "supported_server_spec")
 class SupportedServerSpecJpaEntity(
 
         @Column(name = "name", nullable = false)
-        val name: String,
+        val serverName: String,
 
         @Column(name = "v_cpu", nullable = false)
-        val vCpu: String,
+        val serverVCpu: String,
 
         @Column(name = "memory", nullable = false)
-        val memory: String,
+        val serverMemory: String,
 
         @Enumerated(EnumType.STRING)
         @Column(name = "type", nullable = false)
-        val type: ServerType,
+        val serverType: ServerType,
 
         @Enumerated(EnumType.STRING)
         @Column(name = "cloud_provider", nullable = false)
         val cloudProvider: CloudProvider,
 
         @Column(name = "dollar_price", nullable = false)
-        val dollarPrice: Double,
+        val dollarPrice: BigDecimal,
 
         @Column(name = "credit_price", nullable = false)
-        val creditPrice: Double,
+        val creditPrice: BigDecimal,
 
         @Column(name = "is_used", nullable = false)
         val isUsed: Boolean
