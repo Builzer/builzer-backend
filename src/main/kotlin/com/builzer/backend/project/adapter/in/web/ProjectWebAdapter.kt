@@ -2,10 +2,7 @@ package com.builzer.backend.project.adapter.`in`.web
 
 import com.builzer.backend.global.response.ApiResponse
 import com.builzer.backend.project.adapter.`in`.web.request.CheckDomainRequest
-import com.builzer.backend.project.adapter.`in`.web.response.BranchResponse
-import com.builzer.backend.project.adapter.`in`.web.response.OrgResponse
-import com.builzer.backend.project.adapter.`in`.web.response.RepoResponse
-import com.builzer.backend.project.adapter.`in`.web.response.RepoItemListResponse
+import com.builzer.backend.project.adapter.`in`.web.response.*
 import com.builzer.backend.project.application.port.`in`.ProjectDeployUseCase
 import com.builzer.backend.project.application.port.`in`.RepoInfoUseCase
 import com.builzer.backend.project.application.port.`in`.command.CheckDomainCommand
@@ -15,8 +12,8 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/projects")
 class ProjectWebAdapter(
-        private val repoInfoUseCase: RepoInfoUseCase,
-        private val projectDeployUseCase: ProjectDeployUseCase
+    private val repoInfoUseCase: RepoInfoUseCase,
+    private val projectDeployUseCase: ProjectDeployUseCase
 ) {
     @GetMapping("/orgs")
     fun getOrganizationList(): ApiResponse<List<OrgResponse>> {
@@ -26,32 +23,36 @@ class ProjectWebAdapter(
 
     @GetMapping("/repos")
     fun getRepoList(
-            @RequestParam(defaultValue = "owner") possession: String,
-            @RequestParam(required = false) orgName: String?,
+        @RequestParam(defaultValue = "owner") possession: String,
+        @RequestParam(required = false) orgName: String?,
     ): ApiResponse<List<RepoResponse>> {
         val response = repoInfoUseCase.getRepoList(possession, orgName)
         return ApiResponse.ok(response)
     }
 
-    @GetMapping("/{repoName}/branches")
-    fun getBranchList(@PathVariable repoName: String): ApiResponse<List<BranchResponse>> {
-        val response = repoInfoUseCase.getBranchList(repoName)
+    @GetMapping("/{owner}/{repoName}/branches")
+    fun getBranchList(
+        @PathVariable owner: String,
+        @PathVariable repoName: String
+    ): ApiResponse<List<BranchResponse>> {
+        val response = repoInfoUseCase.getBranchList(owner, repoName)
         return ApiResponse.ok(response)
     }
 
-    @GetMapping("/{repoName}/folders")
-    fun getRepoItemList(
-            @PathVariable repoName: String,
-            @RequestParam(defaultValue = "master") branchName: String,
-            @RequestParam(defaultValue = "/") path: String
-    ): ApiResponse<List<RepoItemListResponse>> {
-        val response = repoInfoUseCase.getRepoItemList(repoName, branchName, path)
+    @GetMapping("/{owner}/{repoName}/folders/{sha}")
+    fun getRepoTreeList(
+        @PathVariable owner: String,
+        @PathVariable repoName: String,
+        @PathVariable sha: String,
+    ): ApiResponse<List<RepoTreeResponse>> {
+        val response = repoInfoUseCase.getRepoTreeList(owner, repoName, sha)
         return ApiResponse.ok(response)
     }
 
     @GetMapping("/check-domain")
     fun checkDomain(
-            @Valid @ModelAttribute checkDomainRequest: CheckDomainRequest): ApiResponse<String> {
+        @Valid @ModelAttribute checkDomainRequest: CheckDomainRequest
+    ): ApiResponse<String> {
         val checkDomainCommand = CheckDomainCommand.of(checkDomainRequest)
         projectDeployUseCase.checkDomainIsAvailable(checkDomainCommand = checkDomainCommand)
         return ApiResponse.ok("Available Domain URL")
