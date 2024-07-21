@@ -24,7 +24,8 @@ class OAuthService(
 
         if (userInfoFromGithub.email == null) {
             userInfoFromGithub.email =
-                oAuthExternalRequestPort.requestUserEmails(githubAccessToken).first().email
+                oAuthExternalRequestPort.requestUserEmails(githubAccessToken)
+                    .find { userEmail -> userEmail.primary }?.email
         }
 
         val createOrReadMemberCommand = CreateOrReadMemberCommand(
