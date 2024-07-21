@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component
 class OAuthExternalAdapter(
     private val githubOAuthClient: GithubOAuthClient,
     private val githubMemberClient: GithubMemberClient,
+    private val githubEmailClient: GithubEmailClient
 ) : OAuthExternalRequestPort {
     @Value("\${oauth.github.client-id}")
     private lateinit var clientId: String
@@ -48,7 +49,7 @@ class OAuthExternalAdapter(
         val authorizationHeader = HttpHeaders()
         authorizationHeader.setBearerAuth(githubAccessToken)
 
-        val userEmailsFromGithub = githubOAuthClient.getUserEmails(authorizationHeader)
+        val userEmailsFromGithub = githubEmailClient.getUserEmails(authorizationHeader)
 
         return userEmailsFromGithub
     }
