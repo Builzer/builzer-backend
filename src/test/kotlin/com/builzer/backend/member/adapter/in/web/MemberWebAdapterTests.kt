@@ -51,6 +51,9 @@ class MemberWebAdapterTests(
 
         val mockedUserInfoResponse = "{\"email\" : \"$mockedEmail\", \"login\" : \"$mockedName\"}"
 
+        val mockedUserEmailResponse =
+            "[{\"email\" : \"$mockedEmail\", \"verified\" : \"true\", \"primary\": \"true\"}]"
+
         When("oauth 요청을 수행할 경우") {
             stubFor(
                 post(urlEqualTo("/login/oauth/access_token"))
@@ -69,6 +72,16 @@ class MemberWebAdapterTests(
                             .withStatus(HttpStatus.OK.value())
                             .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .withBody(mockedUserInfoResponse)
+                    )
+            )
+
+            stubFor(
+                get(urlEqualTo("/user/emails"))
+                    .willReturn(
+                        aResponse()
+                            .withStatus(HttpStatus.OK.value())
+                            .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                            .withBody(mockedUserEmailResponse)
                     )
             )
 
