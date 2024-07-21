@@ -36,7 +36,8 @@ class OAuthService(
             jwtUtil.generateAccessToken(
                 email = member.gitEmail,
                 memberId = member.id,
-                gitAccessToken = member.gitAccessToken
+                gitAccessToken = member.gitAccessToken,
+                gitNickname = member.name
             )
 
         // generate refresh token
@@ -44,7 +45,8 @@ class OAuthService(
             jwtUtil.generateRefreshToken(
                 email = member.gitEmail,
                 memberId = member.id,
-                gitAccessToken = member.gitAccessToken
+                gitAccessToken = member.gitAccessToken,
+                gitNickname = member.name
             )
 
         return OAuthResult(
