@@ -17,12 +17,10 @@ class GithubClientConfig {
             request.header("Accept", "application/vnd.github.v3+json")
             request.header("X-GitHub-Api-Version", "2022-11-28")
 
-            val authentication = SecurityContextHolder.getContext().authentication
+            val authentication = SecurityContextHolder.getContext().authentication.principal
 
-            if (authentication != null) {
-                val memberPayload: MemberPayload = authentication.principal as MemberPayload
-
-                request.header(HttpHeaders.AUTHORIZATION, "Bearer ${memberPayload.gitAccessToken}")
+            if (authentication is MemberPayload) {
+                request.header(HttpHeaders.AUTHORIZATION, "Bearer ${authentication.gitAccessToken}")
             }
         }
     }
