@@ -12,16 +12,18 @@ import org.springframework.test.context.TestConstructor
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 @ActiveProfiles("test")
 class JwtUtilsTests(private val jwtUtil: JwtUtil) : BehaviorSpec({
-    Given("email, memberId, gitAccessToken으로") {
+    Given("email, memberId, gitAccessToken, nickname으로") {
         val email = "test@test.com"
         val memberId = 0L
         val gitAccessToken = "test_token"
+        val gitNickname = "test_nickname"
 
         When("액세스 토큰을 생성하면") {
             val accessToken = jwtUtil.generateAccessToken(
                 email = email,
                 memberId = memberId,
-                gitAccessToken = gitAccessToken
+                gitAccessToken = gitAccessToken,
+                gitNickname = gitNickname
             )
             val bearerToken = "Bearer $accessToken"
 
@@ -31,6 +33,7 @@ class JwtUtilsTests(private val jwtUtil: JwtUtil) : BehaviorSpec({
                 validClaims["email"] shouldBe email
                 validClaims["id"] shouldBe memberId
                 validClaims["gitAccessToken"] shouldBe gitAccessToken
+                validClaims["gitNickname"] shouldBe gitNickname
             }
 
             When("일정 시간이 지나면") {

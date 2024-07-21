@@ -22,20 +22,44 @@ class JwtUtil {
 
     private val key: Key = Keys.secretKeyFor(SignatureAlgorithm.HS512)
 
-    fun generateAccessToken(email: String, memberId: Long, gitAccessToken: String): String {
+    fun generateAccessToken(
+        email: String,
+        memberId: Long,
+        gitAccessToken: String,
+        gitNickname: String
+    ): String {
         return Jwts.builder()
             .setIssuedAt(Date.from(Instant.now()))
             .setExpiration(expiration(accessExpiration))
-            .addClaims(claims(email = email, memberId = memberId, gitAccessToken = gitAccessToken))
+            .addClaims(
+                claims(
+                    email = email,
+                    memberId = memberId,
+                    gitAccessToken = gitAccessToken,
+                    gitNickname = gitNickname
+                )
+            )
             .signWith(key)
             .compact()
     }
 
-    fun generateRefreshToken(email: String, memberId: Long, gitAccessToken: String): String {
+    fun generateRefreshToken(
+        email: String,
+        memberId: Long,
+        gitAccessToken: String,
+        gitNickname: String
+    ): String {
         return Jwts.builder()
             .setIssuedAt(Date.from(Instant.now()))
             .setExpiration(expiration(refreshExpiration))
-            .addClaims(claims(email = email, memberId = memberId, gitAccessToken = gitAccessToken))
+            .addClaims(
+                claims(
+                    email = email,
+                    memberId = memberId,
+                    gitAccessToken = gitAccessToken,
+                    gitNickname = gitNickname
+                )
+            )
             .signWith(key)
             .compact()
     }
@@ -61,7 +85,8 @@ class JwtUtil {
             memberPayload = MemberPayload(
                 id = extractMemberId(claims),
                 email = extractEmail(claims),
-                gitAccessToken = extractGitAccessToken(claims)
+                gitAccessToken = extractGitAccessToken(claims),
+                gitNickname = extractGitNickname(claims)
             )
         )
     }
@@ -78,11 +103,21 @@ class JwtUtil {
         return claims["gitAccessToken"] as String
     }
 
-    private fun claims(email: String, memberId: Long, gitAccessToken: String): Map<String, Any> {
+    private fun extractGitNickname(claims: Claims): String {
+        return claims["gitNickname"] as String
+    }
+
+    private fun claims(
+        email: String,
+        memberId: Long,
+        gitAccessToken: String,
+        gitNickname: String
+    ): Map<String, Any> {
         val claims = mutableMapOf<String, Any>()
         claims["id"] = memberId
         claims["email"] = email
         claims["gitAccessToken"] = gitAccessToken
+        claims["gitNickname"] = gitNickname
         return claims
     }
 
