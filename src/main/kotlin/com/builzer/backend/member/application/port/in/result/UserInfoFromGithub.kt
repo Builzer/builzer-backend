@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class UserInfoFromGithub(
-    val email: String,
+    var email: String?,
 
     @JsonProperty("login")
     val name: String
