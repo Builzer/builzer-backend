@@ -1,6 +1,7 @@
 package com.builzer.backend.member.adapter.out.external
 
 import com.builzer.backend.member.adapter.out.external.request.OAuthExternalRequest
+import com.builzer.backend.member.adapter.out.external.response.UserEmail
 import com.builzer.backend.member.application.port.`in`.result.UserInfoFromGithub
 import com.builzer.backend.member.application.port.out.OAuthExternalRequestPort
 import org.springframework.beans.factory.annotation.Value
@@ -41,5 +42,14 @@ class OAuthExternalAdapter(
         val userInfoFromGithub = githubMemberClient.getUser(authorizationHeader)
 
         return userInfoFromGithub
+    }
+
+    override fun requestUserEmails(githubAccessToken: String): List<UserEmail> {
+        val authorizationHeader = HttpHeaders()
+        authorizationHeader.setBearerAuth(githubAccessToken)
+
+        val userEmailsFromGithub = githubOAuthClient.getUserEmails(authorizationHeader)
+
+        return userEmailsFromGithub
     }
 }

@@ -22,10 +22,15 @@ class OAuthService(
         // retrieve user info from GitHub with access token
         val userInfoFromGithub = oAuthExternalRequestPort.requestUserInfo(githubAccessToken)
 
+        if (userInfoFromGithub.email == null) {
+            userInfoFromGithub.email =
+                oAuthExternalRequestPort.requestUserEmails(githubAccessToken).first().email
+        }
+
         val createOrReadMemberCommand = CreateOrReadMemberCommand(
             githubAccessToken = githubAccessToken,
             name = userInfoFromGithub.name,
-            email = userInfoFromGithub.email
+            email = userInfoFromGithub.email!!
         )
 
         // get member info
