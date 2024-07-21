@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 
 @FeignClient(
-    name = "GithubMemberClient",
+    name = "GithubEmailClient",
     url = "\${feign.endpoint.github.api}",
     configuration = [GithubOAuthClientConfig::class]
 )
