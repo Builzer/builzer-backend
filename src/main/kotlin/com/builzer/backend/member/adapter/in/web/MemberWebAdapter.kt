@@ -8,11 +8,9 @@ import com.builzer.backend.member.util.MemberMapper
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.validation.Valid
 import org.mapstruct.factory.Mappers
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/member")
 class MemberWebAdapter(
