@@ -1,0 +1,34 @@
+[
+    {
+        "name": "develop",
+        "commit": {
+            "sha": "1b603a8028897f1518dxxxxxxxxxxxxdcb30f237",
+            "url": "https://api.github.com/repos/Builzer/builzer-backend/commits/1b603axxxxxxxxxxxxxxx9742412dcb30f237"
+        },
+        "protected": true
+    },
+    {
+        "name": "ft-BLZR-37",
+        "commit": {
+            "sha": "68c8e3fa911xxxxxxxxxxxxxxx6e0a7b00d152e",
+            "url": "https://api.github.com/repos/Builzer/builzer-backend/commits/68c8e3faxxxxxxxxxxxxxxx26e0a7b00d152e"
+        },
+        "protected": false
+    },
+    {
+        "name": "master",
+        "commit": {
+            "sha": "d30613efccbcxxxxxxxxxxxxxxxd7b68b8eb8281",
+            "url": "https://api.github.com/repos/Builzer/builzer-backend/commits/d3061xxxxxxxxxxxxxxx5d7b68b8eb8281"
+        },
+        "protected": true
+    },
+    {
+        "name": "release",
+        "commit": {
+            "sha": "d30613efccbcxxxxxxxxxxxxxxxd7b68b8eb8281",
+            "url": "https://api.github.com/repos/Builzer/builzer-backend/commits/d30613xxxxxxxxxxxxxxxd7b68b8eb8281"
+        },
+        "protected": true
+    }
+]

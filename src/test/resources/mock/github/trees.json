@@ -1,0 +1,263 @@
+{
+  "sha": "d30613efxxxxxxxa49b5d7b68b8eb8281",
+  "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/d30613efccbc0195c287dda49b5d7b68b8eb8281",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3f9ba30c2axxxxxxxfdaaceff887490b7738f",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/3f9ba30c2a1c2d6fd39cfdaaceff887490b7738f"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6c865xxxxxxxf381a789cd8fe636d8",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/6c865ec80cd0a50e5b8923f381a789cd8fe636d8"
+    },
+    {
+      "path": ".github/workflows/build-test.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1734xxxxxxx0e7c1c0bc57faf1d8546",
+      "size": 1644,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/e17342c6c8679871cfbf0e7c1c0bc57faf1d8546"
+    },
+    {
+      "path": ".github/workflows/deploy-dev.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e169a08cxxxxxxx1ca6cee12306d60106",
+      "size": 3686,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/e169a08ce8e657e752f9561ca6cee12306d60106"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a979af6fxxxxxxxd30507b82e13d33b",
+      "size": 468,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/5a979af6fff3f70631c6ae02d30507b82e13d33b"
+    },
+    {
+      "path": "Dockerfile-dev",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8b482f2xxxxxxx5699547fa5035a3",
+      "size": 255,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/f8b482f2ff370172eb04b442e5699547fa5035a3"
+    },
+    {
+      "path": "Dockerfile-prod",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81387f43xxxxxxx9080d74ca89778",
+      "size": 256,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/81387f4376347ffc529f7ee11c9080d74ca89778"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88342b1axxxxxxx609e41f55db37d02",
+      "size": 17,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/88342b1ae9e5a3d01cd66342609e41f55db37d02"
+    },
+    {
+      "path": "build.gradle.kts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62acf4eaxxxxxxx09403a5ffd4bc24a3",
+      "size": 1493,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/62acf4eab8ec6ba31c6e59a09403a5ffd4bc24a3"
+    },
+    {
+      "path": "gradle",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2039caxxxxxxx77cca8be26decb4e",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/2039ca0420cefeaab3ed57c477cca8be26decb4e"
+    },
+    {
+      "path": "gradle/wrapper",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4a8dd475xxxxxxxaa7b609f7784738ef1",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/4a8dd47503dd32d671c961aa7b609f7784738ef1"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6441136xxxxxxx77868979cfbc8ad796",
+      "size": 43453,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/e6441136f3d4ba8a0da8d277868979cfbc8ad796"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4413138xxxxxxxf5e147cd77426ae4409",
+      "size": 250,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/a4413138c96c6ed29b6e2f5e147cd77426ae4409"
+    },
+    {
+      "path": "gradlew",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "b740cf133xxxxxxx3d6234ff8433403b1",
+      "size": 8706,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/b740cf13397ab16efc23cba3d6234ff8433403b1"
+    },
+    {
+      "path": "gradlew.bat",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7101f8e46xxxxxxx29ea3bcb37b5262f",
+      "size": 2918,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/7101f8e4676fcad8adc961e929ea3bcb37b5262f"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2401f0a43xxxxxxx69c080db25d98755d5",
+      "size": 29,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/2401f0a43205b6cbc4286869c080db25d98755d5"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6070ccb84xxxxxxxe4597d905ffa86da0422",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/6070ccb841188c1d5acce4597d905ffa86da0422"
+    },
+    {
+      "path": "src/main",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "524e13fdexxxxxxxb8572ec8dba010210",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/524e13fded4185a2d4da6fbb8572ec8dba010210"
+    },
+    {
+      "path": "src/main/kotlin",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8b6c1390edxxxxxxx3ff461871ec89b80",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/8b6c1390ede73a1f232c001f3ff461871ec89b80"
+    },
+    {
+      "path": "src/main/kotlin/com",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "08031fa6e3xxxxxxx6cc46fbec5897",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/08031fa6e37323507537700310f6cc46fbec5897"
+    },
+    {
+      "path": "src/main/kotlin/com/builzer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dbcf80dexxxxxxx89e0474b2b8d33e",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/dbcf80dedbcd601f2868ea13f89e0474b2b8d33e"
+    },
+    {
+      "path": "src/main/kotlin/com/builzer/backend",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "20e4bfxxxxxxxb3b20545565839",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/20e4bf2db911b8f39e8e39f263b3b20545565839"
+    },
+    {
+      "path": "src/main/kotlin/com/builzer/backend/BackendApplication.kt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4a188cxxxxxxx5f33cf46bb61",
+      "size": 274,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/d4a188c87b3b1465695ee7a0babf5f33cf46bb61"
+    },
+    {
+      "path": "src/main/resources",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "481fcxxxxxxx4d4982d",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/481fcd507f1f609c058b0b49e101cf4b84d4982d"
+    },
+    {
+      "path": "src/main/resources/application-dev.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c20d25xxxxxxx5c7cbaa9",
+      "size": 563,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/c20d2570f6415e411f0af1d6e918b7365c7cbaa9"
+    },
+    {
+      "path": "src/main/resources/application-local.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c50b4xxxxxxx5f8ada94c",
+      "size": 735,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/c50b45c829e5eaf884250b6fa155b1f5f8ada94c"
+    },
+    {
+      "path": "src/main/resources/application-prod.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec4fd87bxxxxxxxe42a300f96f0dff",
+      "size": 304,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/ec4fd87b8f6e01d5968f35267e42a300f96f0dff"
+    },
+    {
+      "path": "src/main/resources/application.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "757ebc4xxxxxxx39f0465bcfc7",
+      "size": 325,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/757ebc4deedba5495f8afa0fc8a439f0465bcfc7"
+    },
+    {
+      "path": "src/test",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cf779xxxxxxx12261070d1bdf",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/cf7795800772a16af8bba85953112261070d1bdf"
+    },
+    {
+      "path": "src/test/kotlin",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "995580axxxxxxx63102c76d3e",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/995580af197aa475d65492f22051163102c76d3e"
+    },
+    {
+      "path": "src/test/kotlin/com",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bd113bxxxxxxx53a68f13f41b",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/bd113b882361e61f44d25d6efcfe53a68f13f41b"
+    },
+    {
+      "path": "src/test/kotlin/com/builzer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4c13ade8xxxxxxxd54174d",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/4c13ade853cc99aa7d8d3f06d06fa4b94d54174d"
+    },
+    {
+      "path": "src/test/kotlin/com/builzer/backend",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0bcaxxxxxxxfb8d43f",
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/trees/0bca873016e76c221e2427f09ffa99779fb8d43f"
+    },
+    {
+      "path": "src/test/kotlin/com/builzer/backend/BackendApplicationTests.kt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ceexxxxxxx8c04f3315c43",
+      "size": 217,
+      "url": "https://api.github.com/repos/Builzer/builzer-backend/git/blobs/cee3c41d70a19da3f9c17cccf9f28c04f3315c43"
+    }
+  ],
+  "truncated": false
+}
