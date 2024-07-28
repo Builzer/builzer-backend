@@ -2,7 +2,7 @@ package com.builzer.backend.project.application.service
 
 import com.builzer.backend.project.adapter.`in`.web.response.*
 import com.builzer.backend.project.adapter.out.client.GithubRepoInfoClient
-import com.builzer.backend.project.adapter.out.client.mapper.GithubMapper
+import com.builzer.backend.project.utils.GithubRepoMapper
 import com.builzer.backend.project.application.port.`in`.RepoInfoUseCase
 import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
@@ -12,8 +12,9 @@ import java.util.*
 class RepoInfoService(
     private val githubRepoInfoClient: GithubRepoInfoClient
 ) : RepoInfoUseCase {
-
-    private val mapper = Mappers.getMapper(GithubMapper::class.java)
+    companion object {
+        private val mapper = Mappers.getMapper(GithubRepoMapper::class.java)
+    }
 
     override fun getOrgList(): List<OrgResponse> {
         val githubRepoInfoResponse = githubRepoInfoClient.getOrgInfo()

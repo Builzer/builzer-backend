@@ -9,9 +9,8 @@ import java.sql.Timestamp
 @Table(name = "project")
 class ProjectJpaEntity(
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "project_plan_id", nullable = false, updatable = false)
-        val projectPlanJpaEntity: ProjectPlanJpaEntity,
+        @OneToMany(mappedBy = "project_detail", fetch = FetchType.LAZY)
+        val projectDetailList: MutableList<ProjectDetailJpaEntity>,
 
         @Column(name = "project_name", nullable = false)
         val projectName: String,

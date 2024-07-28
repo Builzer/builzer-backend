@@ -1,4 +1,4 @@
-package com.builzer.backend.project.adapter.out.client.mapper
+package com.builzer.backend.project.utils
 
 import com.builzer.backend.project.adapter.`in`.web.response.BranchResponse
 import com.builzer.backend.project.adapter.`in`.web.response.OrgResponse
@@ -16,7 +16,7 @@ import java.time.Duration
 import java.time.ZonedDateTime
 
 @Mapper
-interface GithubMapper {
+interface GithubRepoMapper {
 
     @Mapping(source = "login", target = "orgName")
     fun toOrgInfo(githubOrgInfoResponse: GithubOrgInfoResponse): OrgResponse

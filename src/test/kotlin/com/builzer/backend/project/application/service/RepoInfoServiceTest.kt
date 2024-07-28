@@ -1,7 +1,7 @@
 package com.builzer.backend.project.application.service
 
 import com.builzer.backend.project.adapter.`in`.web.response.RepoTreeResponse
-import com.builzer.backend.project.adapter.out.client.mapper.GithubMapper
+import com.builzer.backend.project.utils.GithubRepoMapper
 import com.builzer.backend.project.adapter.out.client.response.GithubRepoInfoResponse
 import com.builzer.backend.project.adapter.out.client.response.GithubTreeInfoResponse
 import com.fasterxml.jackson.core.type.TypeReference
@@ -27,7 +27,7 @@ class RepoInfoServiceTest : FunSpec({
     val objectMapper =
         jacksonObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-    val mapper = Mappers.getMapper(GithubMapper::class.java)
+    val mapper = Mappers.getMapper(GithubRepoMapper::class.java)
 
     test("사용자 레포지토리 목록 얻어오기") {
         val jsonBody =

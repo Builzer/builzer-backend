@@ -5,7 +5,7 @@ import java.sql.Timestamp
 
 class Project(
     val id: Long,
-    val projectPlan: ProjectPlan,
+    val projectDetailList: MutableList<ProjectDetail>,
     val projectName: String,
     val projectStatus: ProjectStatus,
     val domain: String,

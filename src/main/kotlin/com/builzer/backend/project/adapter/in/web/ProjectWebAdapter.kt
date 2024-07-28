@@ -58,4 +58,8 @@ class ProjectWebAdapter(
         return ApiResponse.ok("Available Domain URL")
     }
 
+    @GetMapping("/settings")
+    fun getRecentSettings(): ApiResponse<List<RecentSettingResponse>> {
+        TODO("Lite, Pro 별 사용자 최근 세팅")
+    }
 }

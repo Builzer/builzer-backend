@@ -1,7 +1,6 @@
 package com.builzer.backend.project.adapter.out.persistence.entity
 
 import com.builzer.backend.global.entity.BaseTimeEntity
-import com.builzer.backend.member.adapter.out.persistence.entity.MemberJpaEntity
 import com.builzer.backend.project.adapter.out.persistence.entity.enums.BuildTool
 import com.builzer.backend.project.adapter.out.persistence.entity.json.ProjectEnv
 import com.vladmihalcea.hibernate.type.json.JsonType
@@ -9,12 +8,12 @@ import jakarta.persistence.*
 import org.hibernate.annotations.Type
 
 @Entity
-@Table(name = "project_spec")
-class ProjectSpecJpaEntity(
+@Table(name = "project_detail")
+class ProjectDetailJpaEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "member_id", nullable = false, updatable = false)
-        val memberJpaEntity: MemberJpaEntity,
+        @JoinColumn(name = "project_id", nullable = false, updatable = false)
+        val projectJpaEntity: ProjectJpaEntity,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "supported_language_id", nullable = false, updatable = false)
@@ -23,6 +22,10 @@ class ProjectSpecJpaEntity(
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "supported_server_spec_id", nullable = false, updatable = false)
         val supportedServerSpecJpaEntity: SupportedServerSpecJpaEntity,
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "project_plan_id", nullable = false, updatable = false)
+        val projectPlanJpaEntity: ProjectPlanJpaEntity,
 
         @Column(name = "branch", nullable = false, updatable = false)
         val branch: String,
@@ -54,7 +57,7 @@ class ProjectSpecJpaEntity(
 ) : BaseTimeEntity() {
 
     @Id
-    @Column(name = "project_spec_id")
+    @Column(name = "project_detail_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 }
