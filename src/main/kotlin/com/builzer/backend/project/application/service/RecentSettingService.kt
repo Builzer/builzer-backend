@@ -1,10 +1,11 @@
 package com.builzer.backend.project.application.service
 
+import com.builzer.backend.project.adapter.`in`.web.response.ProjectPlanResponse
+import com.builzer.backend.project.adapter.`in`.web.response.ProjectSettingResponse
 import com.builzer.backend.project.adapter.`in`.web.response.RecentSettingResponse
 import com.builzer.backend.project.application.port.`in`.RecentSettingUseCase
 import com.builzer.backend.project.application.port.out.ProjectPlanPort
 import com.builzer.backend.project.application.port.out.ProjectPort
-import com.builzer.backend.project.domain.Project
 import com.builzer.backend.project.domain.ProjectDetail
 import com.builzer.backend.project.domain.ProjectPlan
 import org.springframework.stereotype.Service
@@ -36,12 +37,37 @@ class RecentSettingService(
 
         val response = mutableListOf<RecentSettingResponse>()
         settingMap.forEach { (key, value) ->
-            val planDetailList = settingMap[key]
-            planDetailList?.sortBy { it.createdAt }
 
-            TODO("mapping response")
+            val plan = planMap[key]
+            val planResponse = ProjectPlanResponse(
+                planName = plan!!.planType,
+                planPrice = plan.planPrice,
+                planExplanation = plan.planExplanation
+            )
+
+            val settingResponse = mutableListOf<ProjectSettingResponse>()
+            value.sortBy { it.createdAt }
+            value.forEach { setting ->
+                settingResponse.add(
+                    ProjectSettingResponse(
+                        projectId = setting.project.id,
+                        projectDetailId = setting.id,
+                        languageSpec =
+                        setting.supportedLanguage.languageType.toString()
+                        + " / "
+                        + setting.supportedLanguage.languageVersion,
+                        buildTool = setting.buildTool,
+                        serverSpec = setting.supportedServer.serverName,
+                        dbSpec = setting.supportedDatabase?.dbType.toString()
+                        + " / "
+                        + setting.supportedDatabase?.dbVersion
+                    )
+                )
+            }
+
+            response.add(RecentSettingResponse(planResponse, settingResponse))
         }
 
-        TODO("return")
+        return response
     }
 }

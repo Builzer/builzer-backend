@@ -6,6 +6,7 @@ import java.sql.Timestamp
 
 class ProjectDetail (
     val id : Long,
+    val project: Project,
     val supportedLanguage : SupportedLanguage,
     val supportedServer: SupportedServer,
     val supportedDatabase: SupportedDatabase?,
